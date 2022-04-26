@@ -28,6 +28,7 @@ struct Vector2 {
     // utils functions
     void set(scalar _x, scalar _y);
     scalar length() const;
+    scalar norm() const;
     scalar distance(const Vector2& vec) const;
     Vector2 normalized() const;
     void normalize();

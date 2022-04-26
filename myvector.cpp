@@ -13,6 +13,10 @@ scalar Vector2::length() const {
 #endif
 }
 
+scalar Vector2::norm() const {
+    return length();
+}
+
 scalar Vector2::distance(const Vector2& vec) const {
 #ifdef USING_FLOAT64
     return sqrt(x * x + y * y);
