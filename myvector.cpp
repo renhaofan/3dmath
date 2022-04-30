@@ -53,6 +53,10 @@ Vector2 Vector2::operator-() const {
     return Vector2(-x, -y);
 }
 
+//Vector2& Vector2::operator=(Vector2& rhs) const {
+//    return rhs;
+//}
+
 Vector2 Vector2::operator+(const Vector2& rhs) const {
     return Vector2(x + rhs.x, y + rhs.y);
 }
@@ -129,16 +133,34 @@ bool Vector2::operator<(const Vector2& rhs) const {
 }
 
 scalar Vector2::operator[](int index) const {
+//  not very clear which case used
 //    std::cout << "not reference" << std::endl;
+    if (index > 1) {
+        std::cerr << "Index out of bounds" << std::endl;
+        throw "Index out of bounds, index should less than 2";
+    }
+    if (index < 0) {
+        std::cerr << "Index out of bounds" << std::endl;
+        throw "Index out of bounds, index should more than 0";
+    }
     return (&x)[index];
 }
 
 scalar& Vector2::operator[](int index) {
+//  w[0]
 //    std::cout << "reference" << std::endl;
+    if (index > 1) {
+        std::cerr << "Index out of bounds" << std::endl;
+        throw "Index out of bounds, index should less than 2";
+    }
+    if (index < 0) {
+        std::cerr << "Index out of bounds" << std::endl;
+        throw "Index out of bounds, index should more than 0";
+    }
     return (&x)[index];
 }
 
-Vector2 operator*(const float a, const Vector2 vec) {
+Vector2 operator*(const scalar a, const Vector2 vec) {
     return Vector2(a*vec.x, a*vec.y);
 }
 
@@ -146,4 +168,3 @@ std::ostream& operator<<(std::ostream& os, const Vector2& vec) {
     os << "(" << vec.x << ", " << vec.y << ")";
     return os;
 }
-

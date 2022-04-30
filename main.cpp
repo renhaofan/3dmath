@@ -32,11 +32,11 @@ using namespace std;
 //};
 
 int main(int argc, char** argv) {
-    Vector2 w(1,2);
+    Vector2 w;
     Vector2 v(3,4);
 
+    cout << v.length() << endl;
 
-    cout << w << endl;
 
     return 0;
 }
