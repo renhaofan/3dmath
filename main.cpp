@@ -1,8 +1,10 @@
 #include <iostream>
 #include <type_traits>
 
+
 #include "myvector.hpp"
 using namespace std;
+
 
 //https://www.zhihu.com/question/36814207/answer/2431162249
 //template <typename T>
@@ -32,10 +34,15 @@ using namespace std;
 //};
 
 int main(int argc, char** argv) {
-    Vector2 w;
-    Vector2 v(3,4);
 
-    cout << v.length() << endl;
+//    Vector2 w;
+//    Vector2 v(w);
+//    w.x = 5;
+//    cout << w << endl;
+//    cout << v << endl;
+    Vector2 w;
+    cout << typeid(w.x).name() << endl;
+
 
 
     return 0;

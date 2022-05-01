@@ -10,5 +10,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 include_directories(./include)
 
-file(GLOB SRC_CPP "*.cpp")
-add_executable(3dmath ${SRC_CPP})
+find_package(Eigen3 REQUIRED)
+
+include_directories(${EIGEN3_INCLUDE_DIRS})
+
+file(GLOB MAIN_CPP main.cpp myvector.cpp)
+add_executable(main ${MAIN_CPP})
+
+file(GLOB TV_CPP test_vector.cpp myvector.cpp)
+add_executable(test_vector ${TV_CPP})

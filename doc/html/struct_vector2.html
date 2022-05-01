@@ -152,8 +152,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3df50bb19af1ab70a820c4444ae1d652"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_vector2.html#a3df50bb19af1ab70a820c4444ae1d652">operator&lt;</a> (const <a class="el" href="struct_vector2.html">Vector2</a> &amp;rhs) const</td></tr>
 <tr class="memdesc:a3df50bb19af1ab70a820c4444ae1d652"><td class="mdescLeft">&#160;</td><td class="mdescRight">comparsion overloading, for the purpose of sort.  <a href="struct_vector2.html#a3df50bb19af1ab70a820c4444ae1d652">More...</a><br /></td></tr>
 <tr class="separator:a3df50bb19af1ab70a820c4444ae1d652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9647d9abf81bffbb929d24b00f1f706d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_vector2.html#a9647d9abf81bffbb929d24b00f1f706d">operator&gt;</a> (const <a class="el" href="struct_vector2.html">Vector2</a> &amp;rhs) const</td></tr>
+<tr class="memdesc:a9647d9abf81bffbb929d24b00f1f706d"><td class="mdescLeft">&#160;</td><td class="mdescRight">comparsion overloading, for the purpose of sort.  <a href="struct_vector2.html#a9647d9abf81bffbb929d24b00f1f706d">More...</a><br /></td></tr>
+<tr class="separator:a9647d9abf81bffbb929d24b00f1f706d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a776f1dc616802e979ccdbfd337948627"><td class="memItemLeft" align="right" valign="top"><a class="el" href="myvector_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035">scalar</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_vector2.html#a776f1dc616802e979ccdbfd337948627">operator[]</a> (int index) const</td></tr>
-<tr class="memdesc:a776f1dc616802e979ccdbfd337948627"><td class="mdescLeft">&#160;</td><td class="mdescRight">index[] overloading.  <a href="struct_vector2.html#a776f1dc616802e979ccdbfd337948627">More...</a><br /></td></tr>
+<tr class="memdesc:a776f1dc616802e979ccdbfd337948627"><td class="mdescLeft">&#160;</td><td class="mdescRight">const object index[] overloading.  <a href="struct_vector2.html#a776f1dc616802e979ccdbfd337948627">More...</a><br /></td></tr>
 <tr class="separator:a776f1dc616802e979ccdbfd337948627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ba2633b3b333f4715e2f5c707808fae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="myvector_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035">scalar</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_vector2.html#a4ba2633b3b333f4715e2f5c707808fae">operator[]</a> (int index)</td></tr>
 <tr class="memdesc:a4ba2633b3b333f4715e2f5c707808fae"><td class="mdescLeft">&#160;</td><td class="mdescRight">index[] overloading.  <a href="struct_vector2.html#a4ba2633b3b333f4715e2f5c707808fae">More...</a><br /></td></tr>
@@ -241,7 +244,7 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Default constructor. </p>
-<p>Create a new 2D vector object (0, 0). </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_vector2.html#a22104d1809be26a419ef1f959e3761bf" title="Default constructor.">Vector2()</a> </dd></dl>
+<p>Create a new 2D vector object (_x, _y). </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_vector2.html#a22104d1809be26a419ef1f959e3761bf" title="Default constructor.">Vector2()</a> </dd></dl>
 
 </div>
 </div>
@@ -673,6 +676,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Whether 2D vector object is less than another. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_vector2.html#a9647d9abf81bffbb929d24b00f1f706d" title="comparsion overloading, for the purpose of sort.">operator&gt;(const Vector2&amp; rhs) const</a>; </dd></dl>
 <p>possible issue: &lt; &gt; comparison rather than EPISILON</p>
 
 </div>
@@ -705,6 +709,34 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a id="a9647d9abf81bffbb929d24b00f1f706d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9647d9abf81bffbb929d24b00f1f706d">&#9670;&nbsp;</a></span>operator&gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Vector2::operator&gt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_vector2.html">Vector2</a> &amp;&#160;</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>comparsion overloading, for the purpose of sort. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rhs</td><td>another 2D vector object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether 2D vector object is more than another. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_vector2.html#a3df50bb19af1ab70a820c4444ae1d652" title="comparsion overloading, for the purpose of sort.">operator&lt;(const Vector2&amp; rhs) const</a>; </dd></dl>
+
+</div>
+</div>
 <a id="a4ba2633b3b333f4715e2f5c707808fae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ba2633b3b333f4715e2f5c707808fae">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
 
@@ -729,6 +761,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>member variable, w[index] </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="myvector_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title=": Use double or float as basic scalar type, float by deatult. add option -DUSING_FLOAT64 when compile...">scalar</a> <a class="el" href="struct_vector2.html#a776f1dc616802e979ccdbfd337948627" title="const object index[] overloading.">operator[](int index) const</a> </dd></dl>
 
 </div>
 </div>
@@ -748,7 +781,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>index[] overloading. </p>
+<p>const object index[] overloading. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">index</td><td>2D vector w, w[index]. </td></tr>
@@ -756,6 +789,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>member variable, w[index], w[0], w[1] </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="myvector_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title=": Use double or float as basic scalar type, float by deatult. add option -DUSING_FLOAT64 when compile...">scalar</a>&amp; <a class="el" href="struct_vector2.html#a4ba2633b3b333f4715e2f5c707808fae" title="index[] overloading.">operator[](int index)</a> </dd></dl>
 
 </div>
 </div>
