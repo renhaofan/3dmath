@@ -1,6 +1,7 @@
 <map id="include/myvector.hpp" name="include/myvector.hpp">
-<area shape="rect" id="node1" title="2D,3D,4D vector simple implementation" alt="" coords="87,5,249,32"/>
-<area shape="rect" id="node2" href="$main_8cpp.html" title=" " alt="" coords="5,80,88,107"/>
-<area shape="rect" id="node3" href="$myvector_8cpp.html" title=" " alt="" coords="113,80,223,107"/>
-<area shape="rect" id="node4" href="$test__vector_8cpp.html" title=" " alt="" coords="247,80,369,107"/>
+<area shape="rect" id="node1" title="2D,3D,4D vector simple implementation" alt="" coords="215,5,377,32"/>
+<area shape="rect" id="node2" href="$mymatrix_8hpp.html" title="2,3,4 square matrix simple implementation" alt="" coords="5,80,171,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title=" " alt="" coords="195,80,277,107"/>
+<area shape="rect" id="node4" href="$myvector_8cpp.html" title=" " alt="" coords="302,80,413,107"/>
+<area shape="rect" id="node5" href="$test__vector_8cpp.html" title=" " alt="" coords="437,80,558,107"/>
 </map>

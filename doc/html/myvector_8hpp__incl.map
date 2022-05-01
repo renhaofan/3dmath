@@ -1,5 +1,6 @@
 <map id="include/myvector.hpp" name="include/myvector.hpp">
-<area shape="rect" id="node1" title="2D,3D,4D vector simple implementation" alt="" coords="12,5,175,32"/>
+<area shape="rect" id="node1" title="2D,3D,4D vector simple implementation" alt="" coords="60,5,223,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,85,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="110,80,173,107"/>
+<area shape="rect" id="node4" href="$mathutils_8hpp.html" title=" " alt="" coords="197,80,309,107"/>
 </map>

@@ -68,10 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">myvector.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -81,14 +78,16 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
+<code>#include &quot;<a class="el" href="mathutils_8hpp_source.html">mathutils.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for myvector.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="myvector_8hpp__incl.png" border="0" usemap="#include_2myvector_8hpp" alt=""/></div>
 <map name="include_2myvector_8hpp" id="include_2myvector_8hpp">
-<area shape="rect" title="2D,3D,4D vector simple implementation" alt="" coords="12,5,175,32"/>
+<area shape="rect" title="2D,3D,4D vector simple implementation" alt="" coords="60,5,223,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,85,107"/>
 <area shape="rect" title=" " alt="" coords="110,80,173,107"/>
+<area shape="rect" href="mathutils_8hpp.html" title=" " alt="" coords="197,80,309,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -96,10 +95,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="myvector_8hpp__dep__incl.png" border="0" usemap="#include_2myvector_8hppdep" alt=""/></div>
 <map name="include_2myvector_8hppdep" id="include_2myvector_8hppdep">
-<area shape="rect" title="2D,3D,4D vector simple implementation" alt="" coords="87,5,249,32"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="5,80,88,107"/>
-<area shape="rect" href="myvector_8cpp.html" title=" " alt="" coords="113,80,223,107"/>
-<area shape="rect" href="test__vector_8cpp.html" title=" " alt="" coords="247,80,369,107"/>
+<area shape="rect" title="2D,3D,4D vector simple implementation" alt="" coords="215,5,377,32"/>
+<area shape="rect" href="mymatrix_8hpp.html" title="2,3,4 square matrix simple implementation" alt="" coords="5,80,171,107"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="195,80,277,107"/>
+<area shape="rect" href="myvector_8cpp.html" title=" " alt="" coords="302,80,413,107"/>
+<area shape="rect" href="test__vector_8cpp.html" title=" " alt="" coords="437,80,558,107"/>
 </map>
 </div>
 </div>
@@ -116,32 +116,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_vector4.html">Vector4</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_vector4.html" title="Vector4 class used for 2D vector.">Vector4</a> class used for 2D vector.  <a href="struct_vector4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:aae7ea69da32f60d553eacff299e5b918"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="myvector_8hpp.html#aae7ea69da32f60d553eacff299e5b918">MYEPSILON</a>&#160;&#160;&#160;1e-6</td></tr>
-<tr class="memdesc:aae7ea69da32f60d553eacff299e5b918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro about float number equal operation.  <a href="myvector_8hpp.html#aae7ea69da32f60d553eacff299e5b918">More...</a><br /></td></tr>
-<tr class="separator:aae7ea69da32f60d553eacff299e5b918"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5a945020d3528355cda82d383676736"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="myvector_8hpp.html#ac5a945020d3528355cda82d383676736">RAD2DEG</a>&#160;&#160;&#160;180.0 / 3.141592653579</td></tr>
-<tr class="memdesc:ac5a945020d3528355cda82d383676736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro convert radians to degree.  <a href="myvector_8hpp.html#ac5a945020d3528355cda82d383676736">More...</a><br /></td></tr>
-<tr class="separator:ac5a945020d3528355cda82d383676736"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7e8592d0a634bd3642e9fd508ea8022"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="myvector_8hpp.html#af7e8592d0a634bd3642e9fd508ea8022">DEG2RAD</a>&#160;&#160;&#160;3.141592653579 / 180.0</td></tr>
-<tr class="memdesc:af7e8592d0a634bd3642e9fd508ea8022"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro convert degree to radians.  <a href="myvector_8hpp.html#af7e8592d0a634bd3642e9fd508ea8022">More...</a><br /></td></tr>
-<tr class="separator:af7e8592d0a634bd3642e9fd508ea8022"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a6d99cd2efc6cbd8f720384a7444ed035"><td class="memItemLeft" align="right" valign="top">typedef float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="myvector_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035">scalar</a></td></tr>
-<tr class="memdesc:a6d99cd2efc6cbd8f720384a7444ed035"><td class="mdescLeft">&#160;</td><td class="mdescRight">: Use double or float as basic scalar type, float by deatult. add option <code>-DUSING_FLOAT64</code> when compile if double type needed or <code>#define USING_FLOAT64</code> before <code>#include "myvector.hpp"</code>  <a href="myvector_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035">More...</a><br /></td></tr>
-<tr class="separator:a6d99cd2efc6cbd8f720384a7444ed035"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:adcbfa57bbb5d13dc0793ba89b8e0b94b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="myvector_8hpp.html#adcbfa57bbb5d13dc0793ba89b8e0b94b">ANGLEUNIT</a> { <a class="el" href="myvector_8hpp.html#adcbfa57bbb5d13dc0793ba89b8e0b94ba3056f8cb158ca8183af7c4b99bd46153">RAD</a>, 
-<a class="el" href="myvector_8hpp.html#adcbfa57bbb5d13dc0793ba89b8e0b94ba7874fe828cc844ddc32e4e971b302cba">DEG</a>
- }</td></tr>
-<tr class="memdesc:adcbfa57bbb5d13dc0793ba89b8e0b94b"><td class="mdescLeft">&#160;</td><td class="mdescRight">choices for function angle in <a class="el" href="struct_vector3.html" title="Vector3 class used for 3D vector.">Vector3</a>  <a href="myvector_8hpp.html#adcbfa57bbb5d13dc0793ba89b8e0b94b">More...</a><br /></td></tr>
-<tr class="separator:adcbfa57bbb5d13dc0793ba89b8e0b94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>2D,3D,4D vector simple implementation </p>
@@ -153,94 +127,7 @@ Enumerations</h2></td></tr>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd><p class="startdd">copy constructor for constrain w(v), w = v, and deepcopy </p>
 <p class="enddd">raw.data() as pointer. </p>
 </dd></dl>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="af7e8592d0a634bd3642e9fd508ea8022"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7e8592d0a634bd3642e9fd508ea8022">&#9670;&nbsp;</a></span>DEG2RAD</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DEG2RAD&#160;&#160;&#160;3.141592653579 / 180.0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Macro convert degree to radians. </p>
-
-</div>
-</div>
-<a id="aae7ea69da32f60d553eacff299e5b918"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae7ea69da32f60d553eacff299e5b918">&#9670;&nbsp;</a></span>MYEPSILON</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MYEPSILON&#160;&#160;&#160;1e-6</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Macro about float number equal operation. </p>
-
-</div>
-</div>
-<a id="ac5a945020d3528355cda82d383676736"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5a945020d3528355cda82d383676736">&#9670;&nbsp;</a></span>RAD2DEG</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define RAD2DEG&#160;&#160;&#160;180.0 / 3.141592653579</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Macro convert radians to degree. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a6d99cd2efc6cbd8f720384a7444ed035"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d99cd2efc6cbd8f720384a7444ed035">&#9670;&nbsp;</a></span>scalar</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef float <a class="el" href="myvector_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035">scalar</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>: Use double or float as basic scalar type, float by deatult. add option <code>-DUSING_FLOAT64</code> when compile if double type needed or <code>#define USING_FLOAT64</code> before <code>#include "myvector.hpp"</code> </p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="adcbfa57bbb5d13dc0793ba89b8e0b94b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcbfa57bbb5d13dc0793ba89b8e0b94b">&#9670;&nbsp;</a></span>ANGLEUNIT</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="myvector_8hpp.html#adcbfa57bbb5d13dc0793ba89b8e0b94b">ANGLEUNIT</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>choices for function angle in <a class="el" href="struct_vector3.html" title="Vector3 class used for 3D vector.">Vector3</a> </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adcbfa57bbb5d13dc0793ba89b8e0b94ba3056f8cb158ca8183af7c4b99bd46153"></a>RAD&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adcbfa57bbb5d13dc0793ba89b8e0b94ba7874fe828cc844ddc32e4e971b302cba"></a>DEG&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
