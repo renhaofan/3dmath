@@ -210,7 +210,7 @@ scalar Vector3::angle(const Vector3& vec, ANGLEUNIT unit) const {
 #ifdef USING_FLOAT64
         return acos(this->dot(vec) / len) * u;
 #else
-        // acosf return  [0 ; π],
+        // acosf return value in the interval [0 ; pi],
         return acosf(this->dot(vec) / len) * u;
 #endif
     }
