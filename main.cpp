@@ -33,6 +33,13 @@ using namespace std;
 //    //    std::cout << "v[0] = "<< v.x <<", v[1] = "<< v.y<<std::endl;
 //};
 
+void test(const float a[4]) {
+    cout << a[0] << endl;
+    cout << a[1] << endl;
+    cout << a[2] << endl;
+    cout << a[3] << endl;
+}
+
 int main(int argc, char** argv) {
 
 //    Vector2 w;
@@ -40,11 +47,13 @@ int main(int argc, char** argv) {
 //    w.x = 5;
 //    cout << w << endl;
 //    cout << v << endl;
-    Vector2 w;
-    cout << typeid(w.x).name() << endl;
+    float a[4]{1, 2, 3, 4};
 
+    float b = 4;
+    float* point_b = &b;
 
-
+    //cout << sizeof(a) / sizeof(float) << endl;
+    //cout << sizeof(point_b) / sizeof(float) << endl;
 
     return 0;
 }
