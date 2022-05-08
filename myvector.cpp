@@ -28,8 +28,9 @@ scalar Vector2::distance(const Vector2& vec) const {
 Vector2 Vector2::normalized() const {
     scalar len = length();
     if (len < MYEPSILON) {
-        std::cerr << "Vector2d length is too small" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     } else {
         return Vector2(x / len, y / len);
     }
@@ -38,8 +39,9 @@ Vector2 Vector2::normalized() const {
 void Vector2::normalize() {
     scalar len = length();
     if (len < MYEPSILON) {
-        std::cerr << "Vector2d length is too small" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     } else {
         this->x = x / len;
         this->y = y / len;
@@ -100,16 +102,18 @@ Vector2& Vector2::operator*=(const scalar scale) {
 
 Vector2 Vector2::operator/(const scalar scale) const {
     if (std::abs(scale) < MYEPSILON) {
-        std::cerr << "scale too smaple" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     }
     return Vector2(x / scale, y / scale);
 }
 
 Vector2& Vector2::operator/=(const scalar scale) {
     if (std::abs(scale) < MYEPSILON) {
-        std::cerr << "scale too smaple" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     }
     x /= scale;
     y /= scale;
@@ -138,13 +142,10 @@ bool Vector2::operator>(const Vector2& rhs) const {
 }
 
 scalar Vector2::operator[](int index) const {
-    if (index > 1) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should less than 2";
-    }
-    if (index < 0) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should more than 0";
+    if ((index > 1) || (index < 0)) {
+        fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Index out of bounds!";
     }
     return (&x)[index];
 }
@@ -152,13 +153,10 @@ scalar Vector2::operator[](int index) const {
 scalar& Vector2::operator[](int index) {
     //  w[0]
     // std::cout << "reference" << std::endl;
-    if (index > 1) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should less than 2";
-    }
-    if (index < 0) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should more than 0";
+    if ((index > 1) || (index < 0)) {
+        fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Index out of bounds!";
     }
     return (&x)[index];
 }
@@ -203,8 +201,9 @@ scalar Vector3::distance(const Vector3& vec) const {
 scalar Vector3::angle(const Vector3& vec, ANGLEUNIT unit) const {
     scalar len = this->length() * vec.length();
     if (len < MYEPSILON) {
-        std::cerr << "length is too small" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     } else {
         scalar u = (unit == RAD) ? 1 : (RAD2DEG);
 #ifdef USING_FLOAT64
@@ -219,8 +218,9 @@ scalar Vector3::angle(const Vector3& vec, ANGLEUNIT unit) const {
 Vector3 Vector3::normalized() const {
     scalar len = length();
     if (len < MYEPSILON) {
-        std::cerr << "Vector2d length is too small" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     } else {
         return Vector3(x / len, y / len, z / len);
     }
@@ -229,8 +229,9 @@ Vector3 Vector3::normalized() const {
 void Vector3::normalize() {
     scalar len = length();
     if (len < MYEPSILON) {
-        std::cerr << "Vector2d length is too small" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     } else {
         this->x = x / len;
         this->y = y / len;
@@ -301,16 +302,18 @@ Vector3& Vector3::operator*=(const scalar scale) {
 
 Vector3 Vector3::operator/(const scalar scale) const {
     if (std::abs(scale) < MYEPSILON) {
-        std::cerr << "scale too smaple" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     }
     return Vector3(x / scale, y / scale, z / scale);
 }
 
 Vector3& Vector3::operator/=(const scalar scale) {
     if (std::abs(scale) < MYEPSILON) {
-        std::cerr << "scale too smaple" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     }
     x /= scale;
     y /= scale;
@@ -343,13 +346,10 @@ bool Vector3::operator>(const Vector3& rhs) const {
 
 scalar Vector3::operator[](int index) const {
     //    std::cout << "not reference" << std::endl;
-    if (index > 2) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should less than 2";
-    }
-    if (index < 0) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should more than 0";
+    if ((index > 2) || (index < 0)) {
+        fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Index out of bounds!";
     }
     return (&x)[index];
 }
@@ -357,13 +357,10 @@ scalar Vector3::operator[](int index) const {
 scalar& Vector3::operator[](int index) {
     //  w[0]
     //    std::cout << "reference" << std::endl;
-    if (index > 2) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should less than 3";
-    }
-    if (index < 0) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should more than 0";
+    if ((index > 2) || (index < 0)) {
+        fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Index out of bounds!";
     }
     return (&x)[index];
 }
@@ -409,8 +406,9 @@ scalar Vector4::distance(const Vector4& vec) const {
 Vector4 Vector4::normalized() const {
     scalar len = length();
     if (len < MYEPSILON) {
-        std::cerr << "Vector2d length is too small" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     } else {
         return Vector4(x / len, y / len, z / len, w / len);
     }
@@ -419,8 +417,9 @@ Vector4 Vector4::normalized() const {
 void Vector4::normalize() {
     scalar len = length();
     if (len < MYEPSILON) {
-        std::cerr << "Vector2d length is too small" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     } else {
         this->x = x / len;
         this->y = y / len;
@@ -480,16 +479,18 @@ Vector4& Vector4::operator*=(const Vector4& rhs) {
 
 Vector4 Vector4::operator/(const scalar scale) const {
     if (std::abs(scale) < MYEPSILON) {
-        std::cerr << "scale too smaple" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     }
     return Vector4(x / scale, y / scale, z / scale, w / scale);
 }
 
 Vector4& Vector4::operator/=(const scalar scale) {
     if (std::abs(scale) < MYEPSILON) {
-        std::cerr << "scale too smaple" << std::endl;
-        throw "Division by zero condition! norm less than EPSILON";
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
     }
     x /= scale;
     y /= scale;
@@ -537,13 +538,10 @@ Vector4& Vector4::operator*=(const scalar scale) {
 
 scalar Vector4::operator[](int index) const {
     //    std::cout << "non reference" << std::endl;
-    if (index > 3) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should less than 4";
-    }
-    if (index < 0) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should more than 0";
+    if ((index > 3) || (index < 0)) {
+        fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Index out of bounds!";
     }
     return (&x)[index];
 }
@@ -551,13 +549,10 @@ scalar Vector4::operator[](int index) const {
 scalar& Vector4::operator[](int index) {
     //  w[0]
     //    std::cout << "reference" << std::endl;
-    if (index > 3) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should less than 4";
-    }
-    if (index < 0) {
-        std::cerr << "Index out of bounds" << std::endl;
-        throw "Index out of bounds, index should more than 0";
+    if ((index > 3) || (index < 0)) {
+        fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Index out of bounds!";
     }
     return (&x)[index];
 }
