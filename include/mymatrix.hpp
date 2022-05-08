@@ -1,7 +1,7 @@
 /**
  *  Copyright (C) All rights reserved.
  *  @file mymatrix.hpp
- *  @brief 2,3,4 square matrix simple implementation
+ *  @brief 2,3,4 square matrix simple implementation, column major order
  *  @author haofan ren, yqykrhf@163.com
  *  @version beta 0.0
  *  @date 2222-2-26
@@ -20,46 +20,76 @@
  *  @brief Matrix2 class used for 2x2 matrix.
  */
 class Matrix2 {
-private:
+  private:
     /** @brief elements stored in column major. */
     scalar m[4];
     /** @brief elements stored in raw major for transpose */
     scalar mt[4];
 
-protected:
-
-public:
-   /**
+  protected:
+  public:
+    /**
     * Create a new 2x2 matrix object, Identity.
     * @brief Default constructor.
-    * @see Matrix2(const scalar* src)
+    * @see Matrix2(const scalar src[4])
     * @see Matrix2(scalar m0, scalar m1, scalar m2, scalar m3)
     */
     Matrix2();
     /**
     * Create a new 2x2 matrix object by pointer.
-    * @brief constructor by pointer
+    * @brief constructor by scalar pointer
     * @see Matrix2()
     * @see Matrix2(scalar m0, scalar m1, scalar m2, scalar m3)
     */
     Matrix2(const scalar src[4]);
     /**
     * Create a new 2x2 matrix object by 4 elements.
-    * @brief constructor by 4 elements.
+    * @brief constructor by 4 scalar elements.
     * @see Matrix2()
-    * @see Matrix2(const scalar* src)
+    * @see Matrix2(const scalar src[4])
     */
     Matrix2(scalar m0, scalar m1, scalar m2, scalar m3);
 
+    /**
+     * @brief Matrix2 copy constructor, deep copy.
+     * @param mat2: Matrix2 object
+     */
+    Matrix2(const Matrix2& mat2);
+
+    /**
+     * @brief Matrix2 operator= overloading, deep copy.
+     * @param mat2: Matirx2 object
+     * @return Matrix2 reference
+     */
+    Matrix2& operator=(const Matrix2& mat2);
+
+    /**
+     * @brief set elements in Matrix2 obejct with scalar pointer.
+     * @param src scalar pointer with 4 elements stored in column major.
+     * @see void set(scalar m0, scalar m1, scalar m2, scalar m3)
+     * @see void setRow(int index, const scalar row[2])
+     * @see void setRow(int index, const Vector2& v)
+     * @see void setColumn(int index, const scalar col[2])
+     * @see void setColumn(int index, const Vector2& v)
+     */
     void set(const scalar src[4]);
+
+
+    /**
+     * @brief set elements in Matrix2 object with 4 scalars.
+     * @param m0
+     * @param m1
+     * @param m2
+     * @param m3
+     */
     void set(scalar m0, scalar m1, scalar m2, scalar m3);
     void setRow(int index, const scalar row[2]);
     void setRow(int index, const Vector2& v);
     void setColumn(int index, const scalar col[2]);
     void setColumn(int index, const Vector2& v);
 
-    const scalar* data() const;
-    const scalar* dataTranspose();
+    scalar* data();
+    scalar* dataTranspose();
 
     const scalar* get() const;
     const scalar* getTranspose();
@@ -74,21 +104,19 @@ public:
     Matrix2& transpose();
     Matrix2& inverse();
 
-    // unary
-    Matrix2 operator-() const;
-
     Matrix2 operator+(const Matrix2& rhs) const;
     Matrix2& operator+=(const Matrix2& rhs);
 
     Matrix2 operator-(const Matrix2& rhs) const;
-    Matrix2& operator-=(const Matrix2& rhs) const;
+    Matrix2& operator-=(const Matrix2& rhs);
 
     Vector2 operator*(const Vector2& rhs) const;
     Matrix2 operator*(const Matrix2& rhs) const;
     Matrix2 operator*(const scalar& rhs);
 
-    Matrix2& operator*=(const Matrix2& rhs) const;
+    Matrix2& operator*=(const Matrix2& rhs);
 
+    bool equal(const Matrix2& rhs, scalar e = MYEPSILON) const;
     bool operator==(const Matrix2& rhs) const;
     bool operator!=(const Matrix2& rhs) const;
 
@@ -98,8 +126,8 @@ public:
     scalar operator()(int i, int j) const;
     scalar& operator()(int i, int j);
 
-    // friends functions
-    friend Matrix2 operator*(scalar s, const Matrix2& m);
-    friend Vector2 operator*(const Vector2& vec, const Matrix2& m);
-    //friend std::ostream& operator<<(std::ostream& os, const Matrix2& m);
+    friend Matrix2 operator-(const Matrix2& mat2); // unary
+    friend Matrix2 operator*(const scalar& s, const Matrix2& mat2);
+    friend Vector2 operator*(const Vector2& vec, const Matrix2& mat2);
+    friend std::ostream& operator<<(std::ostream& os, const Matrix2& mat2);
 };
