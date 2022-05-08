@@ -66,10 +66,10 @@ class Matrix2 {
     /**
      * @brief set elements in Matrix2 obejct with scalar pointer.
      * @param src scalar pointer with 4 elements stored in column major.
-     * @see void set(scalar m0, scalar m1, scalar m2, scalar m3)
-     * @see void setRow(int index, const scalar row[2])
+     * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
+     * @see void setRow(int index, const scalar data[2])
      * @see void setRow(int index, const Vector2& v)
-     * @see void setColumn(int index, const scalar col[2])
+     * @see void setColumn(int index, const scalar data[2])
      * @see void setColumn(int index, const Vector2& v)
      */
     void set(const scalar src[4]);
@@ -77,31 +77,125 @@ class Matrix2 {
 
     /**
      * @brief set elements in Matrix2 object with 4 scalars.
-     * @param m0
-     * @param m1
-     * @param m2
-     * @param m3
+     * @param m0 the element located in (0, 0)
+     * @param m1 the element located in (1, 0)
+     * @param m2 the element located in (0, 1)
+     * @param m3 the element located in (1, 1)
+     * @see void set(const scalar src[4])
+     * @see void setRow(int index, const scalar data[2])
+     * @see void setRow(int index, const Vector2& v)
+     * @see void setColumn(int index, const scalar data[2])
+     * @see void setColumn(int index, const Vector2& v)
      */
-    void set(scalar m0, scalar m1, scalar m2, scalar m3);
-    void setRow(int index, const scalar row[2]);
+    void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3);
+
+    /**
+     * @brief set elements in specified row by pointer
+     * @param index determine specified row
+     * @param data stores the elements to be set
+     * @see void set(const scalar src[4])
+     * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
+     * @see void setRow(int index, const Vector2& v)
+     * @see void setColumn(int index, const scalar data[2])
+     * @see void setColumn(int index, const Vector2& v)
+     */
+    void setRow(int index, const scalar data[2]);
+
+    /**
+     * @brief set elements in specified row by 2D vector
+     * @param index determine specified row
+     * @param v stores the elements to be set
+     * @see void set(const scalar src[4])
+     * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
+     * @see void setRow(int index, const scalar data[2])
+     * @see void setColumn(int index, const scalar data[2])
+     * @see void setColumn(int index, const Vector2& v)
+     */
     void setRow(int index, const Vector2& v);
-    void setColumn(int index, const scalar col[2]);
+    /**
+     * @brief set elements in specified column by pointer
+     * @param index determine specified column
+     * @param v stores the elements to be set
+     * @see void set(const scalar src[4])
+     * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
+     * @see void setRow(int index, const scalar data[2])
+     * @see void setRow(int index, const Vector2& v)
+     * @see void setColumn(int index, const Vector2& v)
+     */
+    void setColumn(int index, const scalar data[2]);
+    /**
+     * @brief set elements in specified column by 2D vector
+     * @param index determine specified column
+     * @param v stores the elements to be set
+     * @see void set(const scalar src[4])
+     * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
+     * @see void setRow(int index, const scalar data[2])
+     * @see void setRow(int index, const Vector2& v)
+     * @see void setColumn(int index, const scalar data[2]);
+     */
     void setColumn(int index, const Vector2& v);
 
+    /**
+     * @brief get the contiguous address raw data(column-major) m[4]
+     * @return scalar pointer of m
+     */
     scalar* data();
+    /**
+     * @brief get the contiguous address raw data(row-major) mt[4]
+     * @return scalar pointer of mt
+     */
     scalar* dataTranspose();
 
+    /**
+     * @brief get the contiguous address const raw data(column-major) m[4]
+     * @return const scalar pointer of m
+     */
     const scalar* get() const;
+    /**
+     * @brief get the contiguous address const raw data(row-major) mt[4]
+     * @return const scalar pointer of mt
+     */
     const scalar* getTranspose();
 
+    /**
+     * @brief get elements in specified row
+     * @param index row index
+     * @return 2D Vector with index-th row elements
+     */
     Vector2 getRow(int index) const;
+    /**
+     * @brief get elements in specified column
+     * @param index column index
+     * @return 2D Vector with index-th column elements
+     */
     Vector2 getColumn(int index) const;
 
+    /**
+     * @brief compute determinant
+     * @return determinant value
+     */
     scalar getDeterminant() const;
-    scalar getAngle(ANGLEUNIT unit = DEG) const; // retrieve angle degree from matrix
+    /**
+     * @brief extract angle from 2x2 rotation matrix
+     * @param unit determint the returned angle unit(degree or radians)
+     * @return rotation angle
+     */
+    scalar getAngle(ANGLEUNIT unit = DEG) const;
 
+    /**
+     * @brief in-place operation, set as identity 2x2 matrix.
+     * @return self-matrix
+     */
     Matrix2& identity();
+    /**
+     * @brief in-place operation, set as transposed 2x2 matrix.
+     * @return self-matrix
+     */
     Matrix2& transpose();
+    /**
+     * @brief in-place operation, set as inversed 2x2 matrix.
+     * @return self-matrix
+     */
     Matrix2& inverse();
 
     Matrix2 operator+(const Matrix2& rhs) const;

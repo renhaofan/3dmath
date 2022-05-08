@@ -46,7 +46,7 @@ void Matrix2::set(const scalar src[4]) {
     m[3] = src[3];
 }
 
-void Matrix2::set(scalar m0, scalar m1, scalar m2, scalar m3) {
+void Matrix2::set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3) {
     m[0] = m0;
     m[1] = m1;
     m[2] = m2;
