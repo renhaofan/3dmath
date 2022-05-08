@@ -13,16 +13,17 @@
 #pragma once
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 #include "mathutils.hpp"
 
 /**
  *  @brief Vector2 class used for 2D vector.
  */
 struct Vector2 {
-    /**
-    * data in 2D vector.
-    */
-    scalar x, y;
+    /** @brief The first element in 2D vector. */
+    scalar x;
+    /** @brief The second element in 2D vector. */
+    scalar y;
 
     /**
      *  Create a new 2D vector object (0, 0).
@@ -175,10 +176,12 @@ struct Vector2 {
  *  @brief Vector3 class used for 3D vector.
  */
 struct Vector3 {
-    /**
-    * data in 3D vector.
-    */
-    scalar x, y, z;
+    /** @brief The first element in 3D vector. */
+    scalar x;
+    /** @brief The second element in 3D vector. */
+    scalar y;
+    /** @brief The third element in 3D vector. */
+    scalar z;
 
     /**
      *  Create a new 3D vector object (0, 0, 0).
@@ -341,10 +344,14 @@ struct Vector3 {
  */
 
 struct Vector4 {
-    /**
-    * data in 4D vector.
-    */
-    scalar x, y, z, w;
+    /** @brief The first element in 3D vector. */
+    scalar x;
+    /** @brief The second element in 3D vector. */
+    scalar y;
+    /** @brief The third element in 3D vector. */
+    scalar z;
+    /** @brief The 4-th element in 3D vector. */
+    scalar w;
 
     /**
      *  Create a new 4D vector object (0, 0, 0, 0).
