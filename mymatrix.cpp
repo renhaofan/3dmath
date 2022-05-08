@@ -33,12 +33,13 @@ Matrix2& Matrix2::operator=(const Matrix2& mat2) {
 }
 
 void Matrix2::set(const scalar src[4]) {
-    if ((src == nullptr) || ((src + 1) == nullptr) ||
-        ((src + 2) == nullptr) || ((src + 3) == nullptr)) {
-        fprintf(stderr, "File %s, Line %d, Function %s(): Data pointer error.\n",
-                __FILE__, __LINE__, __FUNCTION__);
-        throw "Data pointer error.";
-    }
+    // pointer as parameter, impossible to get the number of elements.
+//    if ((src == nullptr) || ((src + 1) == nullptr) ||
+//        ((src + 2) == nullptr) || ((src + 3) == nullptr)) {
+//        fprintf(stderr, "File %s, Line %d, Function %s(): Data pointer error.\n",
+//                __FILE__, __LINE__, __FUNCTION__);
+//        throw "Data pointer error.";
+//    }
     m[0] = src[0];
     m[1] = src[1];
     m[2] = src[2];
@@ -59,11 +60,11 @@ void Matrix2::setRow(int index, const scalar row[2]) {
         throw "Index out of bounds!";
     }
 
-    if ((row == nullptr) || ((row + 1) == nullptr)) {
-        fprintf(stderr, "File %s, Line %d, Function %s(): Data pointer error.\n",
-                __FILE__, __LINE__, __FUNCTION__);
-        throw "Data pointer error.";
-    }
+//    if ((row == nullptr) || ((row + 1) == nullptr)) {
+//        fprintf(stderr, "File %s, Line %d, Function %s(): Data pointer error.\n",
+//                __FILE__, __LINE__, __FUNCTION__);
+//        throw "Data pointer error.";
+//    }
 
     m[index] = row[0];
     m[index + 2] = row[1];
@@ -86,11 +87,11 @@ void Matrix2::setColumn(int index, const scalar col[2]) {
         throw "Index out of bounds!";
     }
 
-    if ((col == nullptr) || ((col + 1) == nullptr)) {
-        fprintf(stderr, "File %s, Line %d, Function %s(): Data pointer error.\n",
-                __FILE__, __LINE__, __FUNCTION__);
-        throw "Data pointer error.";
-    }
+//    if ((col == nullptr) || ((col + 1) == nullptr)) {
+//        fprintf(stderr, "File %s, Line %d, Function %s(): Data pointer error.\n",
+//                __FILE__, __LINE__, __FUNCTION__);
+//        throw "Data pointer error.";
+//    }
 
     m[index * 2] = col[0];
     m[index * 2 + 1] = col[1];
