@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['length_13',['length',['../struct_vector2.html#a90683f1a3cc2c8e5bf9590a3dbf77ffb',1,'Vector2::length()'],['../struct_vector3.html#a71480376f7def93204227b9cc0ed0538',1,'Vector3::length()'],['../struct_vector4.html#ac87a529a2fc1e60395fd880e0a241e87',1,'Vector4::length()']]]
+  ['identity_22',['identity',['../class_matrix2.html#a85e80c4c35421f7dc335f3f06355d861',1,'Matrix2']]],
+  ['include_5fdirectories_23',['include_directories',['../_c_make_lists_8txt.html#acf6619eef4b21bddc8f0d11cabaac842',1,'CMakeLists.txt']]],
+  ['inverse_24',['inverse',['../class_matrix2.html#ac4c077a75864bcad6c19c0a32ce53ff0',1,'Matrix2']]]
 ];

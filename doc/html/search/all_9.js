@@ -1,6 +1,14 @@
 var searchData=
 [
-  ['norm_24',['norm',['../struct_vector2.html#af0e6c904057667d9b51652b658d8711f',1,'Vector2::norm()'],['../struct_vector3.html#a8d2de80b09e257ba225078fcb190df55',1,'Vector3::norm()'],['../struct_vector4.html#a11ad5b61faa1fafdc33fae2d3c887859',1,'Vector4::norm()']]],
-  ['normalize_25',['normalize',['../struct_vector2.html#a275dec68644c1d591b443cc330a1ea33',1,'Vector2::normalize()'],['../struct_vector3.html#a27f9aa009d2bc1bcb04b0ec131808e4e',1,'Vector3::normalize()'],['../struct_vector4.html#a548abd39d5c39016f4a26de1aa6bbf12',1,'Vector4::normalize()']]],
-  ['normalized_26',['normalized',['../struct_vector2.html#a1e0be0f2d578e8b5d0b8f95a9f8b6626',1,'Vector2::normalized()'],['../struct_vector3.html#a65546070166d4f3dc7aae6dbc1c6d6cb',1,'Vector3::normalized()'],['../struct_vector4.html#a299bbdc74a7410d7532080c106e63007',1,'Vector4::normalized()']]]
+  ['m_26',['m',['../class_matrix2.html#ac39e2f74227dbfb6780c441ede2d87e8',1,'Matrix2']]],
+  ['main_27',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.cpp'],['../test__assignment__ops_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test_assignment_ops.cpp'],['../test__matrix_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test_matrix.cpp'],['../test__vector_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;test_vector.cpp']]],
+  ['main_2ecpp_28',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['mathutils_2ehpp_29',['mathutils.hpp',['../mathutils_8hpp.html',1,'']]],
+  ['matrix2_30',['Matrix2',['../class_matrix2.html',1,'Matrix2'],['../class_matrix2.html#a95d4362466002a15387984440718d444',1,'Matrix2::Matrix2()'],['../class_matrix2.html#a5fc7d957174bd1400f62a1541ef61e1d',1,'Matrix2::Matrix2(const scalar src[4])'],['../class_matrix2.html#a0e482c3843c81f1d8f978f58c9af7003',1,'Matrix2::Matrix2(scalar m0, scalar m1, scalar m2, scalar m3)'],['../class_matrix2.html#aa90f0cb2d815ccdc445a70730623404e',1,'Matrix2::Matrix2(const Matrix2 &amp;mat2)']]],
+  ['mt_31',['mt',['../class_matrix2.html#aafbaaf1ea8e9bec20513140f5a47bade',1,'Matrix2']]],
+  ['myepsilon_32',['MYEPSILON',['../mathutils_8hpp.html#aae7ea69da32f60d553eacff299e5b918',1,'mathutils.hpp']]],
+  ['mymatrix_2ecpp_33',['mymatrix.cpp',['../mymatrix_8cpp.html',1,'']]],
+  ['mymatrix_2ehpp_34',['mymatrix.hpp',['../mymatrix_8hpp.html',1,'']]],
+  ['myvector_2ecpp_35',['myvector.cpp',['../myvector_8cpp.html',1,'']]],
+  ['myvector_2ehpp_36',['myvector.hpp',['../myvector_8hpp.html',1,'']]]
 ];

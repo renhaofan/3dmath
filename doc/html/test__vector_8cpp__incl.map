@@ -1,11 +1,12 @@
 <map id="test_vector.cpp" name="test_vector.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="149,5,271,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="38,155,118,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="24,80,97,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="121,80,187,107"/>
-<area shape="rect" id="node5" href="$myvector_8hpp.html" title="2D,3D,4D vector simple implementation" alt="" coords="211,80,321,107"/>
-<area shape="rect" id="node8" title=" " alt="" coords="345,80,437,107"/>
-<area shape="rect" id="node9" title=" " alt="" coords="461,80,564,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="179,155,241,181"/>
-<area shape="rect" id="node7" href="$mathutils_8hpp.html" title=" " alt="" coords="266,155,378,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="163,5,285,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,155,85,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="38,80,111,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="135,80,201,107"/>
+<area shape="rect" id="node5" href="$myvector_8hpp.html" title="2D,3D,4D vector simple implementation" alt="" coords="225,80,335,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="359,80,451,107"/>
+<area shape="rect" id="node10" title=" " alt="" coords="475,80,578,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="155,155,218,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="243,155,317,181"/>
+<area shape="rect" id="node8" href="$mathutils_8hpp.html" title=" " alt="" coords="341,155,453,181"/>
 </map>

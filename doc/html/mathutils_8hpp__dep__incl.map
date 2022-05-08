@@ -1,8 +1,10 @@
 <map id="include/mathutils.hpp" name="include/mathutils.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="215,5,377,32"/>
-<area shape="rect" id="node2" href="$myvector_8hpp.html" title="2D,3D,4D vector simple implementation" alt="" coords="215,80,377,107"/>
-<area shape="rect" id="node3" href="$mymatrix_8hpp.html" title="2,3,4 square matrix simple implementation" alt="" coords="5,155,171,181"/>
-<area shape="rect" id="node4" href="$main_8cpp.html" title=" " alt="" coords="195,155,277,181"/>
-<area shape="rect" id="node5" href="$myvector_8cpp.html" title=" " alt="" coords="302,155,413,181"/>
-<area shape="rect" id="node6" href="$test__vector_8cpp.html" title=" " alt="" coords="437,155,558,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="259,5,422,32"/>
+<area shape="rect" id="node2" href="$myvector_8hpp.html" title="2D,3D,4D vector simple implementation" alt="" coords="259,80,422,107"/>
+<area shape="rect" id="node3" href="$mymatrix_8hpp.html" title="2,3,4 square matrix simple implementation, column major order" alt="" coords="50,155,215,181"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title=" " alt="" coords="239,155,322,181"/>
+<area shape="rect" id="node7" href="$myvector_8cpp.html" title=" " alt="" coords="347,155,457,181"/>
+<area shape="rect" id="node8" href="$test__vector_8cpp.html" title=" " alt="" coords="481,155,603,181"/>
+<area shape="rect" id="node4" href="$mymatrix_8cpp.html" title=" " alt="" coords="5,229,119,256"/>
+<area shape="rect" id="node5" href="$test__matrix_8cpp.html" title=" " alt="" coords="143,229,267,256"/>
 </map>
