@@ -49,7 +49,6 @@ class Matrix2 {
     * @see Matrix2(const scalar src[4])
     */
     Matrix2(scalar m0, scalar m1, scalar m2, scalar m3);
-
     /**
      * @brief Matrix2 copy constructor, deep copy.
      * @param mat2: Matrix2 object
@@ -73,7 +72,6 @@ class Matrix2 {
      * @see void setColumn(int index, const Vector2& v)
      */
     void set(const scalar src[4]);
-
 
     /**
      * @brief set elements in Matrix2 object with 4 scalars.
@@ -198,30 +196,140 @@ class Matrix2 {
      */
     Matrix2& inverse();
 
+    /**
+     * @brief Binary operator, addition of two 2x2 matrix
+     * @see Matrix2& operator+=(const Matrix2& rhs)
+     */
     Matrix2 operator+(const Matrix2& rhs) const;
+    /**
+     * @brief Binary operator, addition of two 2x2 matrix
+     * @see Matrix2 operator+(const Matrix2& rhs) const
+     */
     Matrix2& operator+=(const Matrix2& rhs);
 
+    /**
+     * @brief Binary operator, subtraction of two 2x2 matrices
+     * @see Matrix2& operator-=(const Matrix2& rhs)
+     */
     Matrix2 operator-(const Matrix2& rhs) const;
+    /**
+     * @brief Abbr Binary operator, subtraction of two 2x2 matrices
+     * @see Matrix2& operator-(const Matrix2& rhs) const
+     */
     Matrix2& operator-=(const Matrix2& rhs);
 
+    /**
+     * @brief matrix multiplication
+     * @param rhs right hand side mutiplication object
+     * @return result
+     * @see Matrix2 operator*(const Matrix2& rhs) const;
+     */
+    Matrix2 matmul(const Matrix2& rhs) const;
+    /**
+     * @brief multiply 2x2 matrix with 2D vector
+     * @see friend Vector2 operator*(const Vector2& vec, const Matrix2& mat2)
+     */
     Vector2 operator*(const Vector2& rhs) const;
+    /**
+     * @brief multiply 2x2 matrix with 2x2 matrix
+     * @see Matrix2& operator*=(const Matrix2& rhs)
+     * @see Matrix2 matmul(const Matrix2& rhs) const
+     */
     Matrix2 operator*(const Matrix2& rhs) const;
+    /**
+     * @brief multiply 2x2 matrix with scalar
+     * @see friend Matrix2 operator*(const scalar& s, const Matrix2& mat2)
+     */
     Matrix2 operator*(const scalar& rhs);
-
+    /**
+     * @brief Abbr Binary operator, element-wise multiplication of two 2x2 matrices
+     * @see Matrix2 operator*(const Matrix2& rhs) const
+     */
     Matrix2& operator*=(const Matrix2& rhs);
 
+    /**
+     * @brief comparsion whether two matrices are equal with EPSILON
+     * @param rhs comparison object
+     * @param e EPSILON
+     * @return bool
+     * @see bool operator==(const Matrix2& rhs) const
+     */
     bool equal(const Matrix2& rhs, scalar e = MYEPSILON) const;
+    /**
+     * @brief Equivalence overloading, exact comparsion, no epsilon.
+     * @param rhs comparison object
+     * @return bool
+     * @see bool equal(const Matrix2& rhs, scalar e = MYEPSILON) const
+     * @see bool operator!=(const Matrix2& rhs) const
+     */
     bool operator==(const Matrix2& rhs) const;
+
+    /**
+     *  @brief Inequivalence overloading, exact comparsion, no epsilon.
+     *  @param rhs comparison object
+     *  @return bool
+     *  @see bool operator==(const Matrix2& rhs) const
+     */
     bool operator!=(const Matrix2& rhs) const;
 
+    /**
+     * @brief index[] overloading for const object
+     * @param index range from 0 to 3
+     * @return raw data[index] value
+     * @see scalar& operator[](int index)
+     */
     scalar operator[](int index) const;
+    /**
+     * @brief index[] overloading
+     * @param index range from 0 to 3
+     * @return raw data[index] value
+     * @see scalar operator[](int index) const
+     */
     scalar& operator[](int index);
 
+    /**
+     * @brief index(i,j) overloading for const object
+     * @param i row index, range from 0 to 1.
+     * @param j column index, range from 0 to 1.
+     * @return value located in index(i, j)
+     * @see scalar& operator()(int i, int j)
+     */
     scalar operator()(int i, int j) const;
+    /**
+     * @brief index(i,j) overloading
+     * @param i row index, range from 0 to 1.
+     * @param j column index, range from 0 to 1.
+     * @return value located in index(i, j)
+     * @see scalar operator()(int i, int j) const
+     */
     scalar& operator()(int i, int j);
 
-    friend Matrix2 operator-(const Matrix2& mat2); // unary
+    /**
+     * @brief unary operator, for negative Matrix2
+     * @param mat2
+     * @return negative matrix2
+     */
+    friend Matrix2 operator-(const Matrix2& mat2);
+    /**
+     * @brief multiply a scalar with a 2x2 matrix
+     * @param s scalar
+     * @param mat2 2x2 matrix
+     * @return result
+     * @see Matrix2 operator*(const scalar& rhs)
+     */
     friend Matrix2 operator*(const scalar& s, const Matrix2& mat2);
+
+    /**
+     * @brief multiply a 2D vector with 2x2 matrix
+     * @param vec 2D vector
+     * @param mat2 2x2 matrix
+     * @return result
+     * @see Vector2 operator*(const Vector2& rhs) const
+     */
     friend Vector2 operator*(const Vector2& vec, const Matrix2& mat2);
+    /**
+     *  @brief << overloading.
+     *  @return std::ostream object
+     */
     friend std::ostream& operator<<(std::ostream& os, const Matrix2& mat2);
 };

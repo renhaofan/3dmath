@@ -13,7 +13,7 @@ Matrix2::Matrix2(scalar m0, scalar m1, scalar m2, scalar m3) {
 }
 
 Matrix2::Matrix2(const Matrix2& mat2) {
-    // std::cout << "invoke ctor aka copy constructor" << std::endl;
+//    std::cout << "invoke ctor aka copy constructor" << std::endl;
     m[0] = mat2[0];
     m[1] = mat2[1];
     m[2] = mat2[2];
@@ -21,7 +21,7 @@ Matrix2::Matrix2(const Matrix2& mat2) {
 }
 
 Matrix2& Matrix2::operator=(const Matrix2& mat2) {
-    // std::cout << "invoke copy assignment operator" << std::endl;
+//    std::cout << "invoke copy assignment operator" << std::endl;
     if (this == &mat2) {
         return *this;
     }
@@ -229,14 +229,25 @@ Matrix2& Matrix2::operator-=(const Matrix2& rhs) {
     return *this;
 }
 
+Matrix2 Matrix2::matmul(const Matrix2 &rhs) const {
+//    return Matrix2(m[0] * rhs[0] + m[2] * rhs[1], m[1] * rhs[0] + m[3] * rhs[1],
+//                   m[0] * rhs[2] + m[2] * rhs[3], m[1] * rhs[2] + m[3] * rhs[3]);
+//    Matrix2 tmp;
+//    tmp(0, 0) = tmp.getRow(0).dot(rhs.getColumn(0));
+//    tmp(0, 1) = tmp.getRow(0).dot(rhs.getColumn(1));
+//    tmp(1, 0) = tmp.getRow(1).dot(rhs.getColumn(0));
+//    tmp(1, 1) = tmp.getRow(1).dot(rhs.getColumn(1));
+//    return tmp;
+}
+
 Vector2 Matrix2::operator*(const Vector2& rhs) const {
     return Vector2(m[0] * rhs.x + m[2] * rhs.y,
                    m[1] * rhs.x + m[3] * rhs.y);
 }
 
 Matrix2 Matrix2::operator*(const Matrix2& rhs) const {
-    return Matrix2(m[0] * rhs[0] + m[2] * rhs[1], m[1] * rhs[0] + m[3] * rhs[1],
-                   m[0] * rhs[2] + m[2] * rhs[3], m[1] * rhs[2] + m[3] * rhs[3]);
+    return Matrix2(m[0] * rhs[0], m[1] * rhs[1],
+                   m[2] * rhs[2], m[3] * rhs[3]);
 }
 
 Matrix2 Matrix2::operator*(const scalar& rhs) {
