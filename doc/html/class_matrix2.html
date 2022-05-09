@@ -149,9 +149,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afa145a3004367520b5c7dcb745ef888c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix2.html#afa145a3004367520b5c7dcb745ef888c">inverse</a> ()</td></tr>
 <tr class="memdesc:afa145a3004367520b5c7dcb745ef888c"><td class="mdescLeft">&#160;</td><td class="mdescRight">in-place operation, compute inversed 2x2 matrix.  <a href="class_matrix2.html#afa145a3004367520b5c7dcb745ef888c">More...</a><br /></td></tr>
 <tr class="separator:afa145a3004367520b5c7dcb745ef888c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac241d5105b509786195be0db9b93d705"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix2.html">Matrix2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix2.html#ac241d5105b509786195be0db9b93d705">inversed</a> () const</td></tr>
-<tr class="memdesc:ac241d5105b509786195be0db9b93d705"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute inverse matrix  <a href="class_matrix2.html#ac241d5105b509786195be0db9b93d705">More...</a><br /></td></tr>
-<tr class="separator:ac241d5105b509786195be0db9b93d705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a749001c412ca7588e8df6dc676ffa496"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix2.html">Matrix2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix2.html#a749001c412ca7588e8df6dc676ffa496">computeInverse</a> () const</td></tr>
+<tr class="memdesc:a749001c412ca7588e8df6dc676ffa496"><td class="mdescLeft">&#160;</td><td class="mdescRight">compute inverse matrix  <a href="class_matrix2.html#a749001c412ca7588e8df6dc676ffa496">More...</a><br /></td></tr>
+<tr class="separator:a749001c412ca7588e8df6dc676ffa496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fee4aaff5413259e5ac34439b8348f7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix2.html#a8fee4aaff5413259e5ac34439b8348f7">inversed</a> () const</td></tr>
+<tr class="memdesc:a8fee4aaff5413259e5ac34439b8348f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">judge whether the matrix is reversible by determinant equal to 0 with EPISION  <a href="class_matrix2.html#a8fee4aaff5413259e5ac34439b8348f7">More...</a><br /></td></tr>
+<tr class="separator:a8fee4aaff5413259e5ac34439b8348f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c8f2d5322bd66e96c31b97cb793e64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_matrix2.html">Matrix2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix2.html#a41c8f2d5322bd66e96c31b97cb793e64">operator+</a> (const <a class="el" href="class_matrix2.html">Matrix2</a> &amp;rhs) const</td></tr>
 <tr class="memdesc:a41c8f2d5322bd66e96c31b97cb793e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary operator, addition of two 2x2 matrix.  <a href="class_matrix2.html#a41c8f2d5322bd66e96c31b97cb793e64">More...</a><br /></td></tr>
 <tr class="separator:a41c8f2d5322bd66e96c31b97cb793e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,7 +273,8 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>constructor by scalar pointer </p>
-<p>Create a new 2x2 matrix object by pointer. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_matrix2.html#a95d4362466002a15387984440718d444" title="Default constructor.">Matrix2()</a> </dd>
+<p>Create a new 2x2 matrix object by pointer. </p><dl class="section warning"><dt>Warning</dt><dd>make sure the pointer is 4 elements array </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_matrix2.html#a95d4362466002a15387984440718d444" title="Default constructor.">Matrix2()</a> </dd>
 <dd>
 <a class="el" href="class_matrix2.html#a0e482c3843c81f1d8f978f58c9af7003" title="constructor by 4 scalar elements.">Matrix2(scalar m0, scalar m1, scalar m2, scalar m3)</a> </dd></dl>
 
@@ -348,6 +352,33 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a749001c412ca7588e8df6dc676ffa496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a749001c412ca7588e8df6dc676ffa496">&#9670;&nbsp;</a></span>computeInverse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_matrix2.html">Matrix2</a> Matrix2::computeInverse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>compute inverse matrix </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Inverse</td><td>matrix not exists! </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>inverse matrix </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>void <a class="el" href="class_matrix2.html#afa145a3004367520b5c7dcb745ef888c" title="in-place operation, compute inversed 2x2 matrix.">inverse()</a> </dd></dl>
+
+</div>
+</div>
 <a id="af52a6aaf4dbfb7cd351bba368db3d7a7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af52a6aaf4dbfb7cd351bba368db3d7a7">&#9670;&nbsp;</a></span>data()</h2>
 
@@ -470,6 +501,12 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">determinant</td><td>is not equal to 1 with EPSILON </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>rotation angle </dd></dl>
 
 </div>
@@ -494,6 +531,12 @@ Friends</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">index</td><td>column index </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">index</td><td>&gt; 2 || index &lt; 0 </td></tr>
   </table>
   </dd>
 </dl>
@@ -544,6 +587,12 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">index</td><td>&gt; 2 || index &lt; 0 </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>2D Vector with index-th row elements </dd></dl>
 
 </div>
@@ -584,18 +633,24 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 
 <p>in-place operation, compute inversed 2x2 matrix. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_matrix2.html" title="Matrix2 class used for 2x2 matrix.">Matrix2</a> <a class="el" href="class_matrix2.html#ac241d5105b509786195be0db9b93d705" title="compute inverse matrix">inversed()</a> </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">Inverse</td><td>matrix not exists! </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd>bool <a class="el" href="class_matrix2.html#a8fee4aaff5413259e5ac34439b8348f7" title="judge whether the matrix is reversible by determinant equal to 0 with EPISION">inversed()</a> </dd></dl>
 
 </div>
 </div>
-<a id="ac241d5105b509786195be0db9b93d705"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac241d5105b509786195be0db9b93d705">&#9670;&nbsp;</a></span>inversed()</h2>
+<a id="a8fee4aaff5413259e5ac34439b8348f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fee4aaff5413259e5ac34439b8348f7">&#9670;&nbsp;</a></span>inversed()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_matrix2.html">Matrix2</a> Matrix2::inversed </td>
+          <td class="memname">bool Matrix2::inversed </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -603,8 +658,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>compute inverse matrix </p>
-<dl class="section return"><dt>Returns</dt><dd>inverse matrix </dd></dl>
+<p>judge whether the matrix is reversible by determinant equal to 0 with EPISION </p>
+<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 <dl class="section see"><dt>See also</dt><dd>void <a class="el" href="class_matrix2.html#afa145a3004367520b5c7dcb745ef888c" title="in-place operation, compute inversed 2x2 matrix.">inverse()</a> </dd></dl>
 
 </div>
@@ -699,8 +754,14 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">(i</td><td>&lt; 0) || (i &gt; 1) || (j &lt; 0) || (j &gt; 1) </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>value located in index(i, j) </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title=": Use double or float as basic scalar type, float by deatult. add option -DUSING_FLOAT64 when compile...">scalar</a> <a class="el" href="class_matrix2.html#a331a75f22ce0d0c67e98349106d9a40b" title="index(i,j) overloading for const object">operator()(int i, int j) const</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title="Use double or float as basic scalar type, float by default. Add complie option -DUSING_FLOAT64 or #de...">scalar</a> <a class="el" href="class_matrix2.html#a331a75f22ce0d0c67e98349106d9a40b" title="index(i,j) overloading for const object">operator()(int i, int j) const</a> </dd></dl>
 
 </div>
 </div>
@@ -738,8 +799,14 @@ Friends</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">(i</td><td>&lt; 0) || (i &gt; 1) || (j &lt; 0) || (j &gt; 1) </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>value located in index(i, j) </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title=": Use double or float as basic scalar type, float by deatult. add option -DUSING_FLOAT64 when compile...">scalar</a>&amp; <a class="el" href="class_matrix2.html#a618743071b4b157586590c3c7bdbe821" title="index(i,j) overloading">operator()(int i, int j)</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title="Use double or float as basic scalar type, float by default. Add complie option -DUSING_FLOAT64 or #de...">scalar</a>&amp; <a class="el" href="class_matrix2.html#a618743071b4b157586590c3c7bdbe821" title="index(i,j) overloading">operator()(int i, int j)</a> </dd></dl>
 
 </div>
 </div>
@@ -985,7 +1052,7 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
-<dl class="section see"><dt>See also</dt><dd>bool <a class="el" href="class_matrix2.html#aac05a2d26ced80e0d1f716b1a8c106fc" title="comparsion whether two matrices are equal with EPSILON">equal</a>(const <a class="el" href="class_matrix2.html" title="Matrix2 class used for 2x2 matrix.">Matrix2</a>&amp; rhs, <a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title=": Use double or float as basic scalar type, float by deatult. add option -DUSING_FLOAT64 when compile...">scalar</a> e = <a class="el" href="mathutils_8hpp.html#aae7ea69da32f60d553eacff299e5b918" title="Macro about float number equal operation.">MYEPSILON</a>) const </dd>
+<dl class="section see"><dt>See also</dt><dd>bool <a class="el" href="class_matrix2.html#aac05a2d26ced80e0d1f716b1a8c106fc" title="comparsion whether two matrices are equal with EPSILON">equal</a>(const <a class="el" href="class_matrix2.html" title="Matrix2 class used for 2x2 matrix.">Matrix2</a>&amp; rhs, <a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title="Use double or float as basic scalar type, float by default. Add complie option -DUSING_FLOAT64 or #de...">scalar</a> e = <a class="el" href="mathutils_8hpp.html#aae7ea69da32f60d553eacff299e5b918" title="Macro about float number equal operation.">MYEPSILON</a>) const </dd>
 <dd>
 bool <a class="el" href="class_matrix2.html#a55985273a688d79f92215af30b65d323" title="Inequivalence overloading, exact comparsion, no epsilon.">operator!=(const Matrix2&amp; rhs) const</a> </dd></dl>
 
@@ -1014,8 +1081,14 @@ bool <a class="el" href="class_matrix2.html#a55985273a688d79f92215af30b65d323" t
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">index</td><td>&gt; 3 || index &lt; 0 </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>raw data[index] value </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title=": Use double or float as basic scalar type, float by deatult. add option -DUSING_FLOAT64 when compile...">scalar</a> <a class="el" href="class_matrix2.html#a9e31911cf10096134653c7db86b098a1" title="index[] overloading for const object">operator[](int index) const</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title="Use double or float as basic scalar type, float by default. Add complie option -DUSING_FLOAT64 or #de...">scalar</a> <a class="el" href="class_matrix2.html#a9e31911cf10096134653c7db86b098a1" title="index[] overloading for const object">operator[](int index) const</a> </dd></dl>
 
 </div>
 </div>
@@ -1042,8 +1115,14 @@ bool <a class="el" href="class_matrix2.html#a55985273a688d79f92215af30b65d323" t
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">index</td><td>&gt; 3 || index &lt; 0 </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>raw data[index] value </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title=": Use double or float as basic scalar type, float by deatult. add option -DUSING_FLOAT64 when compile...">scalar</a>&amp; <a class="el" href="class_matrix2.html#a77cf3859882477c003eabc05a5d93dad" title="index[] overloading">operator[](int index)</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="mathutils_8hpp.html#a6d99cd2efc6cbd8f720384a7444ed035" title="Use double or float as basic scalar type, float by default. Add complie option -DUSING_FLOAT64 or #de...">scalar</a>&amp; <a class="el" href="class_matrix2.html#a77cf3859882477c003eabc05a5d93dad" title="index[] overloading">operator[](int index)</a> </dd></dl>
 
 </div>
 </div>
@@ -1130,6 +1209,7 @@ void <a class="el" href="class_matrix2.html#a5e862637998e4906ddf55247ef0e3ddd" t
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>make sure the pointer is 4 elements array </dd></dl>
 <dl class="section see"><dt>See also</dt><dd>void <a class="el" href="class_matrix2.html#a3200d70e116669a97573d1be719877aa" title="set elements in Matrix2 object with 4 scalars.">set(const scalar&amp; m0, const scalar&amp; m1, const scalar&amp; m2, const scalar&amp; m3)</a> </dd>
 <dd>
 void <a class="el" href="class_matrix2.html#ac694e6718314eaca6e36b958819a04de" title="set elements in specified row by pointer">setRow(int index, const scalar data[2])</a> </dd>
@@ -1176,6 +1256,13 @@ void <a class="el" href="class_matrix2.html#a5e862637998e4906ddf55247ef0e3ddd" t
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">index</td><td>&gt; 2 || index &lt; 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>make sure the pointer is 2 elements array </dd></dl>
 <dl class="section see"><dt>See also</dt><dd>void <a class="el" href="class_matrix2.html#a00c15bb68393fb103b7720cc71e49f33" title="set elements in Matrix2 obejct with scalar pointer.">set(const scalar src[4])</a> </dd>
 <dd>
 void <a class="el" href="class_matrix2.html#a3200d70e116669a97573d1be719877aa" title="set elements in Matrix2 object with 4 scalars.">set(const scalar&amp; m0, const scalar&amp; m1, const scalar&amp; m2, const scalar&amp; m3)</a> </dd>
@@ -1219,6 +1306,12 @@ void <a class="el" href="class_matrix2.html#a5e862637998e4906ddf55247ef0e3ddd" t
   <table class="params">
     <tr><td class="paramname">index</td><td>determine specified column </td></tr>
     <tr><td class="paramname">v</td><td>stores the elements to be set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">index</td><td>&gt; 2 || index &lt; 0 </td></tr>
   </table>
   </dd>
 </dl>
@@ -1295,6 +1388,13 @@ void <a class="el" href="class_matrix2.html#a892317871fdfe8ad5cdb1821b5d1174e" t
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>make sure the pointer is 2 elements array </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">index</td><td>&gt; 2 || index &lt; 0 </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section see"><dt>See also</dt><dd>void <a class="el" href="class_matrix2.html#a00c15bb68393fb103b7720cc71e49f33" title="set elements in Matrix2 obejct with scalar pointer.">set(const scalar src[4])</a> </dd>
 <dd>
 void <a class="el" href="class_matrix2.html#a3200d70e116669a97573d1be719877aa" title="set elements in Matrix2 object with 4 scalars.">set(const scalar&amp; m0, const scalar&amp; m1, const scalar&amp; m2, const scalar&amp; m3)</a> </dd>
@@ -1338,6 +1438,12 @@ void <a class="el" href="class_matrix2.html#a5e862637998e4906ddf55247ef0e3ddd" t
   <table class="params">
     <tr><td class="paramname">index</td><td>determine specified row </td></tr>
     <tr><td class="paramname">v</td><td>stores the elements to be set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">index</td><td>&gt; 2 || index &lt; 0 </td></tr>
   </table>
   </dd>
 </dl>
