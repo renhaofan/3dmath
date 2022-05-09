@@ -38,6 +38,7 @@ class Matrix2 {
     /**
     * Create a new 2x2 matrix object by pointer.
     * @brief constructor by scalar pointer
+    * @warning make sure the pointer is 4 elements array
     * @see Matrix2()
     * @see Matrix2(scalar m0, scalar m1, scalar m2, scalar m3)
     */
@@ -65,6 +66,7 @@ class Matrix2 {
     /**
      * @brief set elements in Matrix2 obejct with scalar pointer.
      * @param src scalar pointer with 4 elements stored in column major.
+     * @warning make sure the pointer is 4 elements array
      * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
      * @see void setRow(int index, const scalar data[2])
      * @see void setRow(int index, const Vector2& v)
@@ -91,6 +93,8 @@ class Matrix2 {
      * @brief set elements in specified row by pointer
      * @param index determine specified row
      * @param data stores the elements to be set
+     * @warning make sure the pointer is 2 elements array
+     * @exception index > 2 || index < 0
      * @see void set(const scalar src[4])
      * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
      * @see void setRow(int index, const Vector2& v)
@@ -103,6 +107,7 @@ class Matrix2 {
      * @brief set elements in specified row by 2D vector
      * @param index determine specified row
      * @param v stores the elements to be set
+     * @exception index > 2 || index < 0
      * @see void set(const scalar src[4])
      * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
      * @see void setRow(int index, const scalar data[2])
@@ -114,6 +119,8 @@ class Matrix2 {
      * @brief set elements in specified column by pointer
      * @param index determine specified column
      * @param data stores the elements to be set
+     * @exception index > 2 || index < 0
+     * @warning make sure the pointer is 2 elements array
      * @see void set(const scalar src[4])
      * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
      * @see void setRow(int index, const scalar data[2])
@@ -125,6 +132,7 @@ class Matrix2 {
      * @brief set elements in specified column by 2D vector
      * @param index determine specified column
      * @param v stores the elements to be set
+     * @exception index > 2 || index < 0
      * @see void set(const scalar src[4])
      * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
      * @see void setRow(int index, const scalar data[2])
@@ -158,12 +166,14 @@ class Matrix2 {
     /**
      * @brief get elements in specified row
      * @param index row index
+     * @exception index > 2 || index < 0
      * @return 2D Vector with index-th row elements
      */
     Vector2 getRow(int index) const;
     /**
      * @brief get elements in specified column
      * @param index column index
+     * @exception index > 2 || index < 0
      * @return 2D Vector with index-th column elements
      */
     Vector2 getColumn(int index) const;
@@ -176,6 +186,7 @@ class Matrix2 {
     /**
      * @brief extract angle from 2x2 rotation matrix
      * @param unit determint the returned angle unit(degree or radians)
+     * @exception determinant is not equal to 1 with EPSILON
      * @return rotation angle
      */
     scalar getAngle(ANGLEUNIT unit = DEG) const;
@@ -206,15 +217,24 @@ class Matrix2 {
     }
     /**
      * @brief in-place operation, compute inversed 2x2 matrix.
-     * @see Matrix2 inversed()
+     * @exception Inverse matrix not exists!
+     * @see bool inversed()
      */
     void inverse();
     /**
      * @brief compute inverse matrix
+     * @exception Inverse matrix not exists!
      * @return inverse matrix
      * @see void inverse()
      */
-    Matrix2 inversed() const;
+    Matrix2 computeInverse() const;
+
+    /**
+     * @brief judge whether the matrix is reversible by determinant equal to 0 with EPISION
+     * @return bool
+     * @see void inverse()
+     */
+    bool inversed() const;
 
 
     /**
@@ -303,6 +323,7 @@ class Matrix2 {
     /**
      * @brief index[] overloading for const object
      * @param index range from 0 to 3
+     * @exception index > 3 || index < 0
      * @return raw data[index] value
      * @see scalar& operator[](int index)
      */
@@ -310,6 +331,7 @@ class Matrix2 {
     /**
      * @brief index[] overloading
      * @param index range from 0 to 3
+     * @exception index > 3 || index < 0
      * @return raw data[index] value
      * @see scalar operator[](int index) const
      */
@@ -319,6 +341,7 @@ class Matrix2 {
      * @brief index(i,j) overloading for const object
      * @param i row index, range from 0 to 1.
      * @param j column index, range from 0 to 1.
+     * @exception (i < 0) || (i > 1) || (j < 0) || (j > 1)
      * @return value located in index(i, j)
      * @see scalar& operator()(int i, int j)
      */
@@ -327,6 +350,7 @@ class Matrix2 {
      * @brief index(i,j) overloading
      * @param i row index, range from 0 to 1.
      * @param j column index, range from 0 to 1.
+     * @exception (i < 0) || (i > 1) || (j < 0) || (j > 1)
      * @return value located in index(i, j)
      * @see scalar operator()(int i, int j) const
      */

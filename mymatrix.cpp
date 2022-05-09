@@ -1,7 +1,7 @@
 #include "mymatrix.hpp"
 
 Matrix2::Matrix2() {
-    identity();
+    setIdentity();
 }
 
 Matrix2::Matrix2(const scalar src[4]) {
@@ -189,7 +189,7 @@ void Matrix2::inverse() {
     m[3] *= det;
 }
 
-Matrix2 Matrix2::inversed() const {
+Matrix2 Matrix2::computeInverse() const {
     scalar det = this->getDeterminant();
     if (std::abs(det) < MYEPSILON) {
         fprintf(stderr, "File %s, Line %d, Function %s(): Inverse matrix not exists.\n",
@@ -201,6 +201,15 @@ Matrix2 Matrix2::inversed() const {
     tmp *= det;
     return tmp;
 }
+
+bool Matrix2::inversed() const {
+    scalar det = this->getDeterminant();
+    if (std::abs(det) < MYEPSILON) {
+        return false;
+    }
+    return true;
+}
+
 
 Matrix2 Matrix2::operator+(const Matrix2& rhs) const {
     return Matrix2(m[0] + rhs[0], m[1] + rhs[1],
