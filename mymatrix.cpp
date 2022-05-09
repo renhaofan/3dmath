@@ -171,24 +171,11 @@ scalar Matrix2::getAngle(ANGLEUNIT unit) const {
 #endif
 }
 
-Matrix2& Matrix2::identity() {
-    m[0] = 1;
-    m[1] = 0;
-    m[2] = 0;
-    m[3] = 1;
-    return *this;
-}
-
-Matrix2& Matrix2::transpose() {
-    std::swap(m[1], m[2]);
-    return *this;
-}
-
-Matrix2& Matrix2::inverse() {
+void Matrix2::inverse() {
     // try to compute inverse matirx
     scalar det = this->getDeterminant();
     if (std::abs(det) < MYEPSILON) {
-        fprintf(stderr, "File %s, Line %d, Function %s(): Inverse matrix not exists, return Identity.\n",
+        fprintf(stderr, "File %s, Line %d, Function %s(): Inverse matrix not exists.\n",
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Inverse matrix not exists!";
     }
@@ -200,7 +187,19 @@ Matrix2& Matrix2::inverse() {
     m[1] *= det;
     m[2] *= det;
     m[3] *= det;
-    return *this;
+}
+
+Matrix2 Matrix2::inversed() const {
+    scalar det = this->getDeterminant();
+    if (std::abs(det) < MYEPSILON) {
+        fprintf(stderr, "File %s, Line %d, Function %s(): Inverse matrix not exists.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Inverse matrix not exists!";
+    }
+    Matrix2 tmp(m[3], -m[1], -m[2], m[0]);
+    det = 1 / det;
+    tmp *= det;
+    return tmp;
 }
 
 Matrix2 Matrix2::operator+(const Matrix2& rhs) const {
@@ -249,6 +248,11 @@ Matrix2 Matrix2::operator*(const scalar& rhs) {
 }
 
 Matrix2& Matrix2::operator*=(const Matrix2& rhs) {
+    *this = (*this) * rhs;
+    return *this;
+}
+
+Matrix2& Matrix2::operator*=(const scalar& rhs) {
     *this = (*this) * rhs;
     return *this;
 }

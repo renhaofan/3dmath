@@ -182,19 +182,40 @@ class Matrix2 {
 
     /**
      * @brief in-place operation, set as identity 2x2 matrix.
-     * @return self-matrix
      */
-    Matrix2& identity();
+    void setIdentity() {
+        m[0] = 1;
+        m[1] = 0;
+        m[2] = 0;
+        m[3] = 1;
+    }
     /**
-     * @brief in-place operation, set as transposed 2x2 matrix.
-     * @return self-matrix
+     * @brief in-place operation, transpose 2x2 matrix.
+     * @see Matrix2 transposed()
      */
-    Matrix2& transpose();
+    void transpose() {
+        std::swap(m[1], m[2]);
+    }
     /**
-     * @brief in-place operation, set as inversed 2x2 matrix.
-     * @return self-matrix
+     * @brief transpose operation
+     * @return transposed Matrix2
+     * @see void transpose()
      */
-    Matrix2& inverse();
+    Matrix2 transposed() const {
+        return Matrix2(m[0], m[2], m[1], m[3]);
+    }
+    /**
+     * @brief in-place operation, compute inversed 2x2 matrix.
+     * @see Matrix2 inversed()
+     */
+    void inverse();
+    /**
+     * @brief compute inverse matrix
+     * @return inverse matrix
+     * @see void inverse()
+     */
+    Matrix2 inversed() const;
+
 
     /**
      * @brief Binary operator, addition of two 2x2 matrix
@@ -246,6 +267,13 @@ class Matrix2 {
      * @see Matrix2 operator*(const Matrix2& rhs) const
      */
     Matrix2& operator*=(const Matrix2& rhs);
+    /**
+     * @brief Abbr Binray operator, multiply 2x2 matrix with scalar
+     * @see Matrix2 operator*(const scalar& rhs);
+     */
+    Matrix2& operator*=(const scalar& rhs);
+
+
 
     /**
      * @brief comparsion whether two matrices are equal with EPSILON
