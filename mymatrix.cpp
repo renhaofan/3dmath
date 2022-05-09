@@ -230,14 +230,8 @@ Matrix2& Matrix2::operator-=(const Matrix2& rhs) {
 }
 
 Matrix2 Matrix2::matmul(const Matrix2 &rhs) const {
-//    return Matrix2(m[0] * rhs[0] + m[2] * rhs[1], m[1] * rhs[0] + m[3] * rhs[1],
-//                   m[0] * rhs[2] + m[2] * rhs[3], m[1] * rhs[2] + m[3] * rhs[3]);
-//    Matrix2 tmp;
-//    tmp(0, 0) = tmp.getRow(0).dot(rhs.getColumn(0));
-//    tmp(0, 1) = tmp.getRow(0).dot(rhs.getColumn(1));
-//    tmp(1, 0) = tmp.getRow(1).dot(rhs.getColumn(0));
-//    tmp(1, 1) = tmp.getRow(1).dot(rhs.getColumn(1));
-//    return tmp;
+    return Matrix2(m[0] * rhs[0] + m[2] * rhs[1], m[1] * rhs[0] + m[3] * rhs[1],
+                   m[0] * rhs[2] + m[2] * rhs[3], m[1] * rhs[2] + m[3] * rhs[3]);
 }
 
 Vector2 Matrix2::operator*(const Vector2& rhs) const {

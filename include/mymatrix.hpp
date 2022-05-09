@@ -113,7 +113,7 @@ class Matrix2 {
     /**
      * @brief set elements in specified column by pointer
      * @param index determine specified column
-     * @param v stores the elements to be set
+     * @param data stores the elements to be set
      * @see void set(const scalar src[4])
      * @see void set(const scalar& m0, const scalar& m1, const scalar& m2, const scalar& m3)
      * @see void setRow(int index, const scalar data[2])
