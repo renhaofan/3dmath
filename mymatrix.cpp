@@ -13,7 +13,7 @@ Matrix2::Matrix2(scalar m0, scalar m1, scalar m2, scalar m3) {
 }
 
 Matrix2::Matrix2(const Matrix2& mat2) {
-//    std::cout << "invoke ctor aka copy constructor" << std::endl;
+    //    std::cout << "invoke ctor aka copy constructor" << std::endl;
     m[0] = mat2[0];
     m[1] = mat2[1];
     m[2] = mat2[2];
@@ -21,7 +21,7 @@ Matrix2::Matrix2(const Matrix2& mat2) {
 }
 
 Matrix2& Matrix2::operator=(const Matrix2& mat2) {
-//    std::cout << "invoke copy assignment operator" << std::endl;
+    //    std::cout << "invoke copy assignment operator" << std::endl;
     if (this == &mat2) {
         return *this;
     }
@@ -33,13 +33,6 @@ Matrix2& Matrix2::operator=(const Matrix2& mat2) {
 }
 
 void Matrix2::set(const scalar src[4]) {
-    // pointer as parameter, impossible to get the number of elements.
-//    if ((src == nullptr) || ((src + 1) == nullptr) ||
-//        ((src + 2) == nullptr) || ((src + 3) == nullptr)) {
-//        fprintf(stderr, "File %s, Line %d, Function %s(): Data pointer error.\n",
-//                __FILE__, __LINE__, __FUNCTION__);
-//        throw "Data pointer error.";
-//    }
     m[0] = src[0];
     m[1] = src[1];
     m[2] = src[2];
@@ -54,24 +47,17 @@ void Matrix2::set(const scalar& m0, const scalar& m1, const scalar& m2, const sc
 }
 
 void Matrix2::setRow(int index, const scalar row[2]) {
-    if ((index > 2) || (index < 0)) {
+    if ((index > 1) || (index < 0)) {
         fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Index out of bounds!";
     }
-
-//    if ((row == nullptr) || ((row + 1) == nullptr)) {
-//        fprintf(stderr, "File %s, Line %d, Function %s(): Data pointer error.\n",
-//                __FILE__, __LINE__, __FUNCTION__);
-//        throw "Data pointer error.";
-//    }
-
     m[index] = row[0];
     m[index + 2] = row[1];
 }
 
 void Matrix2::setRow(int index, const Vector2& v) {
-    if ((index > 2) || (index < 0)) {
+    if ((index > 1) || (index < 0)) {
         fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Index out of bounds!";
@@ -81,24 +67,17 @@ void Matrix2::setRow(int index, const Vector2& v) {
 }
 
 void Matrix2::setColumn(int index, const scalar col[2]) {
-    if ((index > 2) || (index < 0)) {
+    if ((index > 1) || (index < 0)) {
         fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Index out of bounds!";
     }
-
-//    if ((col == nullptr) || ((col + 1) == nullptr)) {
-//        fprintf(stderr, "File %s, Line %d, Function %s(): Data pointer error.\n",
-//                __FILE__, __LINE__, __FUNCTION__);
-//        throw "Data pointer error.";
-//    }
-
     m[index * 2] = col[0];
     m[index * 2 + 1] = col[1];
 }
 
 void Matrix2::setColumn(int index, const Vector2& v) {
-    if ((index > 2) || (index < 0)) {
+    if ((index > 1) || (index < 0)) {
         fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Index out of bounds!";
@@ -107,28 +86,29 @@ void Matrix2::setColumn(int index, const Vector2& v) {
     m[index * 2 + 1] = v.y;
 }
 
+void Matrix2::setIdentity() {
+    m[0] = 1;
+    m[1] = 0;
+    m[2] = 0;
+    m[3] = 1;
+}
+
+void Matrix2::setRotatonMatrix(const scalar& angle, ANGLEUNIT unit) {
+    scalar u = (unit == DEG) ? DEG2RAD : (1);
+    m[0] = std::cos(angle * u);
+    m[1] = std::sin(angle * u);
+    m[2] = -m[1];
+    m[3] = m[0];
+}
+
+
+
 scalar* Matrix2::data() {
     return m;
 }
 
-scalar* Matrix2::dataTranspose() {
-    mt[0] = m[0];
-    mt[1] = m[2];
-    mt[2] = m[1];
-    mt[3] = m[3];
-    return mt;
-}
-
-const scalar* Matrix2::get() const {
+const scalar* Matrix2::constData() const {
     return m;
-}
-
-const scalar* Matrix2::getTranspose() {
-    mt[0] = m[0];
-    mt[1] = m[2];
-    mt[2] = m[1];
-    mt[3] = m[3];
-    return mt;
 }
 
 Vector2 Matrix2::getRow(int index) const {
@@ -158,7 +138,7 @@ scalar Matrix2::getAngle(ANGLEUNIT unit) const {
     // R = | cos  -sin|
     //   = | sin   cos|
     // angle = atan2 (sin/cos)
-    if (std::abs(getDeterminant() - 1) > MYEPSILON) {
+    if (!this->isRotationMatrix()) {
         fprintf(stderr, "File %s, Line %d, Function %s(): Not a rotation matrix.\n",
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Not a rotation matrix!";
@@ -169,6 +149,16 @@ scalar Matrix2::getAngle(ANGLEUNIT unit) const {
 #else
     return atan2f(m[1], m[0]) * u;
 #endif
+}
+
+bool Matrix2::isRotationMatrix() const {
+    // determinant == 1
+    if (std::abs(getDeterminant() - 1) > MYEPSILON) return false;
+    // unit column vector groups
+    if (std::abs(this->getColumn(0).dot(this->getColumn(1))) > MYEPSILON) return false;
+    if (std::abs(this->getColumn(0).norm() - 1) > MYEPSILON) return false;
+    if (std::abs(this->getColumn(1).norm() - 1) > MYEPSILON) return false;
+    return true;
 }
 
 void Matrix2::inverse() {
@@ -202,14 +192,13 @@ Matrix2 Matrix2::computeInverse() const {
     return tmp;
 }
 
-bool Matrix2::inversed() const {
+bool Matrix2::isInversed() const {
     scalar det = this->getDeterminant();
     if (std::abs(det) < MYEPSILON) {
         return false;
     }
     return true;
 }
-
 
 Matrix2 Matrix2::operator+(const Matrix2& rhs) const {
     return Matrix2(m[0] + rhs[0], m[1] + rhs[1],
@@ -237,7 +226,7 @@ Matrix2& Matrix2::operator-=(const Matrix2& rhs) {
     return *this;
 }
 
-Matrix2 Matrix2::matmul(const Matrix2 &rhs) const {
+Matrix2 Matrix2::matmul(const Matrix2& rhs) const {
     return Matrix2(m[0] * rhs[0] + m[2] * rhs[1], m[1] * rhs[0] + m[3] * rhs[1],
                    m[0] * rhs[2] + m[2] * rhs[3], m[1] * rhs[2] + m[3] * rhs[3]);
 }
@@ -258,6 +247,26 @@ Matrix2 Matrix2::operator*(const scalar& rhs) {
 
 Matrix2& Matrix2::operator*=(const Matrix2& rhs) {
     *this = (*this) * rhs;
+    return *this;
+}
+
+Matrix2 Matrix2::operator/(const scalar &rhs) const {
+    if (std::abs(rhs) < MYEPSILON) {
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
+    }
+    Matrix2 ret(m[0], m[1], m[2], m[3]);
+    return ret * (1 / rhs);
+}
+
+Matrix2 &Matrix2::operator/=(const scalar &rhs) {
+    if (std::abs(rhs) < MYEPSILON) {
+        fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
+                __FILE__, __LINE__, __FUNCTION__);
+        throw "Division by zero condition!";
+    }
+    *this = (*this) / rhs;
     return *this;
 }
 

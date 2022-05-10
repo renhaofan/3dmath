@@ -76,6 +76,9 @@ $(function() {
 <li>computeInverse()
 : <a class="el" href="class_matrix2.html#a749001c412ca7588e8df6dc676ffa496">Matrix2</a>
 </li>
+<li>constData()
+: <a class="el" href="class_matrix2.html#a83587ba39bdb309e2efa66614f08107a">Matrix2</a>
+</li>
 <li>cross()
 : <a class="el" href="struct_vector3.html#a158dc2300eecf39a18b3198bb70fda27">Vector3</a>
 </li>
@@ -85,9 +88,6 @@ $(function() {
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>data()
 : <a class="el" href="class_matrix2.html#af52a6aaf4dbfb7cd351bba368db3d7a7">Matrix2</a>
-</li>
-<li>dataTranspose()
-: <a class="el" href="class_matrix2.html#aa398503343d3fcaaa80a887e62d3a410">Matrix2</a>
 </li>
 <li>distance()
 : <a class="el" href="struct_vector2.html#a522148ccab0bb1938e66e1d1a6db3b30">Vector2</a>
@@ -113,9 +113,6 @@ $(function() {
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
-<li>get()
-: <a class="el" href="class_matrix2.html#ab32410757fdd673a6ee0df9f0183ef23">Matrix2</a>
-</li>
 <li>getAngle()
 : <a class="el" href="class_matrix2.html#a3b1d1e98f826c57355ee22f63880c79b">Matrix2</a>
 </li>
@@ -128,9 +125,6 @@ $(function() {
 <li>getRow()
 : <a class="el" href="class_matrix2.html#ad2eb2fb490a56a919dadb4ddbf7ac0ba">Matrix2</a>
 </li>
-<li>getTranspose()
-: <a class="el" href="class_matrix2.html#a9264e5bd61c66063fe9d4d99aef907fe">Matrix2</a>
-</li>
 </ul>
 
 
@@ -138,8 +132,11 @@ $(function() {
 <li>inverse()
 : <a class="el" href="class_matrix2.html#afa145a3004367520b5c7dcb745ef888c">Matrix2</a>
 </li>
-<li>inversed()
-: <a class="el" href="class_matrix2.html#a8fee4aaff5413259e5ac34439b8348f7">Matrix2</a>
+<li>isInversed()
+: <a class="el" href="class_matrix2.html#a413a0083a6c551081e90aa7add08e099">Matrix2</a>
+</li>
+<li>isRotationMatrix()
+: <a class="el" href="class_matrix2.html#a06a391a2641984c68e8bca7dc0f3cd51">Matrix2</a>
 </li>
 </ul>
 
@@ -161,10 +158,7 @@ $(function() {
 : <a class="el" href="class_matrix2.html#aa7a04beb79e8fc558cd1b6db731e350e">Matrix2</a>
 </li>
 <li>Matrix2()
-: <a class="el" href="class_matrix2.html#aa90f0cb2d815ccdc445a70730623404e">Matrix2</a>
-</li>
-<li>mt
-: <a class="el" href="class_matrix2.html#aafbaaf1ea8e9bec20513140f5a47bade">Matrix2</a>
+: <a class="el" href="class_matrix2.html#a0e482c3843c81f1d8f978f58c9af7003">Matrix2</a>
 </li>
 </ul>
 
@@ -235,12 +229,14 @@ $(function() {
 , <a class="el" href="struct_vector4.html#a4ecca1b58beb1b5396101aad6f41f855">Vector4</a>
 </li>
 <li>operator/()
-: <a class="el" href="struct_vector2.html#a070eb11471330c4b6b811f20e82322e5">Vector2</a>
+: <a class="el" href="class_matrix2.html#acabd49a74c6f3bb4115e8e7dee2712df">Matrix2</a>
+, <a class="el" href="struct_vector2.html#a070eb11471330c4b6b811f20e82322e5">Vector2</a>
 , <a class="el" href="struct_vector3.html#ad4f8b4216cbd8526ed2d3eb6780609ce">Vector3</a>
 , <a class="el" href="struct_vector4.html#abf32e08f986962dfce115406183586e2">Vector4</a>
 </li>
 <li>operator/=()
-: <a class="el" href="struct_vector2.html#aa22f9c670a79e0187aad1c112d63e716">Vector2</a>
+: <a class="el" href="class_matrix2.html#a55ec912c641a75f55cc668e946c34f26">Matrix2</a>
+, <a class="el" href="struct_vector2.html#aa22f9c670a79e0187aad1c112d63e716">Vector2</a>
 , <a class="el" href="struct_vector3.html#affbe46e5fb2e28d6cf7d48e04badbf83">Vector3</a>
 , <a class="el" href="struct_vector4.html#a8b0036bb3bd4b6752ab3b33c1e43e47f">Vector4</a>
 </li>
@@ -271,7 +267,7 @@ $(function() {
 </li>
 <li>operator[]()
 : <a class="el" href="class_matrix2.html#a9e31911cf10096134653c7db86b098a1">Matrix2</a>
-, <a class="el" href="struct_vector2.html#a4ba2633b3b333f4715e2f5c707808fae">Vector2</a>
+, <a class="el" href="struct_vector2.html#a776f1dc616802e979ccdbfd337948627">Vector2</a>
 , <a class="el" href="struct_vector3.html#ae1f7ea4facdeddea39bcb988a5972f44">Vector3</a>
 , <a class="el" href="struct_vector4.html#ad071221c75684f87fc5e0d7c2f6c0ac8">Vector4</a>
 </li>
@@ -291,8 +287,11 @@ $(function() {
 <li>setIdentity()
 : <a class="el" href="class_matrix2.html#acdf5ba1201b2b3bd374f32d1cfe8a4a4">Matrix2</a>
 </li>
+<li>setRotatonMatrix()
+: <a class="el" href="class_matrix2.html#aa5850a525842bda70a394f4d71499a66">Matrix2</a>
+</li>
 <li>setRow()
-: <a class="el" href="class_matrix2.html#af06313dfea315ee404509a16ee77d04e">Matrix2</a>
+: <a class="el" href="class_matrix2.html#ac694e6718314eaca6e36b958819a04de">Matrix2</a>
 </li>
 </ul>
 
