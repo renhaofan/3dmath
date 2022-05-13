@@ -108,15 +108,32 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix2.html">Matrix2</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_matrix2.html" title="Matrix2 class used for 2x2 matrix.">Matrix2</a> class used for 2x2 matrix.  <a href="class_matrix2.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix3.html">Matrix3</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_matrix3.html" title="Matrix3 class used for 3x3 matrix.">Matrix3</a> class used for 3x3 matrix.  <a href="class_matrix3.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix4.html">Matrix4</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_matrix4.html" title="Matrix4 class used for 4x4 matrix.">Matrix4</a> class used for 4x4 matrix.  <a href="class_matrix4.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>2,3,4 square matrix simple implementation, column major order </p>
 <p>Copyright (C) All rights reserved.</p>
 <dl class="section author"><dt>Author</dt><dd>haofan ren, <a href="#" onclick="location.href='mai'+'lto:'+'yqy'+'kr'+'hf@'+'16'+'3.c'+'om'; return false;">yqykr<span style="display: none;">.nosp@m.</span>hf@1<span style="display: none;">.nosp@m.</span>63.co<span style="display: none;">.nosp@m.</span>m</a> </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>beta 0.0 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2222-2-26 </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>function data() issue, when multiple pointer point that, memory management. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>The elements of the matrix are stored as column major order. | 0 2 | | 0 3 6 | | 0 4 8 12 | | 1 3 | | 1 4 7 | | 1 5 9 13 | | 2 5 8 | | 2 6 10 14 | | 3 7 11 15 | </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>22-2-26 </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd><p class="startdd">function data() issue, when multiple pointer point that, memory management. </p>
+<p class="interdd">block operation. </p>
+<p class="enddd">matrix3 get axis-angle. </p>
+</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The elements of the matrix are stored as column major order. </dd>
+<dd>
+| 0 2 |....| 0 3 6 |......| 0 4 8 12 | </dd>
+<dd>
+| 1 3 |....| 1 4 7 |......| 1 5 9 13 | </dd>
+<dd>
+...........| 2 5 8 |......| 2 6 10 14 | </dd>
+<dd>
+..........................| 3 7 11 15 | </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
