@@ -7,6 +7,7 @@
  *  @date 2222-2-26
  *  @note comment ref:https://www.doxygen.nl/manual/docblocks.html
  *  @todo copy constructor for constrain w(v), w = v, and deepcopy
+ *  @todo Vector3 tohomogeous
  *  @todo raw.data() as pointer.
  */
 
