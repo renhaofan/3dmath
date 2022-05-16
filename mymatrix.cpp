@@ -1428,11 +1428,11 @@ bool Matrix4::operator==(const Matrix4 &rhs) const {
 
 bool Matrix4::operator!=(const Matrix4 &rhs) const {
     for (int i = 0; i < 16; ++i) {
-        if (m[i] == rhs[i]) {
-            return false;
+        if (m[i] != rhs[i]) {
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
 scalar Matrix4::operator[](int index) const {
