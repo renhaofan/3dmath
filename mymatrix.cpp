@@ -712,7 +712,7 @@ Matrix3& Matrix3::operator*=(const scalar& rhs) {
 }
 
 Matrix3 Matrix3::operator/(const scalar& rhs) const {
-    if (std::abs(rhs) > MYEPSILON) {
+    if (std::abs(rhs) < MYEPSILON) {
         fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Division by zero condition!";
@@ -723,7 +723,7 @@ Matrix3 Matrix3::operator/(const scalar& rhs) const {
 }
 
 Matrix3& Matrix3::operator/=(const scalar& rhs) {
-    if (std::abs(rhs) > MYEPSILON) {
+    if (std::abs(rhs) < MYEPSILON) {
         fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Division by zero condition!";
@@ -767,16 +767,7 @@ bool Matrix3::operator==(const Matrix3& rhs) const {
 }
 
 bool Matrix3::operator!=(const Matrix3& rhs) const {
-    if (m[0] == rhs[0]) return false;
-    if (m[1] == rhs[1]) return false;
-    if (m[2] == rhs[2]) return false;
-    if (m[3] == rhs[3]) return false;
-    if (m[4] == rhs[4]) return false;
-    if (m[5] == rhs[5]) return false;
-    if (m[6] == rhs[6]) return false;
-    if (m[7] == rhs[7]) return false;
-    if (m[8] == rhs[8]) return false;
-    return true;
+    return !this->operator==(rhs);
 }
 
 scalar Matrix3::operator[](int index) const {
@@ -799,7 +790,8 @@ scalar& Matrix3::operator[](int index) {
 
 scalar Matrix3::operator()(int i, int j) const {
     if ((i < 0) || (i > 2) || (j < 0) || (j > 2)) {
-        std::cerr << "Index out of bounds" << std::endl;
+        fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
+                __FILE__, __LINE__, __FUNCTION__);
         throw "Index out of bounds!";
     }
     return m[j * 3 + i];
@@ -807,7 +799,8 @@ scalar Matrix3::operator()(int i, int j) const {
 
 scalar& Matrix3::operator()(int i, int j) {
     if ((i < 0) || (i > 2) || (j < 0) || (j > 2)) {
-        std::cerr << "Index out of bounds" << std::endl;
+        fprintf(stderr, "File %s, Line %d, Function %s(): Index out of bounds.\n",
+                __FILE__, __LINE__, __FUNCTION__);
         throw "Index out of bounds!";
     }
     return m[j * 3 + i];
