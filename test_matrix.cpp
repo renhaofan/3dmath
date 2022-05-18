@@ -11,90 +11,87 @@ int main() {
                   4.f, 5.f, 6.f, 7.f,
                   8.f, 9.f, 10.f, 11.f,
                   12.f, 13.f, 14.f, 15.f};
+
     Matrix4 m;
+    m.scale(5, 2 ,32);
     cout << m << endl;
-    m.set(0.f, 1.f, 2.f, 3.f,
-                  4.f, 5.f, 6.f, 7.f,
-                  8.f, 9.f, 10.f, 11.f,
-          12.f, 13.f, 14.f, 15.f);
-    cout << m << endl;
-//    m.set(data);
+////    m.set(data);
+////    cout << m << endl;
+//    scalar row[] = {9, 2, 3, 1};
+//    m.setRow(0, row);
+//    m.setRow(1, row);
+//    m.setRow(2, Vector4(0, 1, 2, 3));
+//    m.setRow(3, Vector4(8, 9, 12, 4));
 //    cout << m << endl;
-    scalar row[] = {9, 2, 3, 1};
-    m.setRow(0, row);
-    m.setRow(1, row);
-    m.setRow(2, Vector4(0, 1, 2, 3));
-    m.setRow(3, Vector4(8, 9, 12, 4));
-    cout << m << endl;
-    m.setIdentity();
-    cout << m << endl;
-    m.setColumn(0, row);
-    m.setColumn(3, Vector4(8, 9, 12, 4));
-    cout << m << endl;
+//    m.setIdentity();
+//    cout << m << endl;
+//    m.setColumn(0, row);
+//    m.setColumn(3, Vector4(8, 9, 12, 4));
+//    cout << m << endl;
 
 
-    scalar* p = m.data();
-    p[2] = 25;
-    cout << m << endl;
+//    scalar* p = m.data();
+//    p[2] = 25;
+//    cout << m << endl;
 
-    for (int i = 0; i < 4; i++) {
-        cout << m.getRow(i) << endl;
-    }
-    for (int i = 0; i < 4; i++) {
-        cout << m.getColumn(i) << endl;
-    }
+//    for (int i = 0; i < 4; i++) {
+//        cout << m.getRow(i) << endl;
+//    }
+//    for (int i = 0; i < 4; i++) {
+//        cout << m.getColumn(i) << endl;
+//    }
 
 
-    scalar src[]{4.f, 1.f, 2.f, 3.f,
-                  4.f, 5.f, 6.f, 7.f,
-                  8.f, 3.f, 1.f, 11.f,
-                  12.f, 13.f, 14.f, 15.f};
-    m.set(src);
-    Eigen::Matrix4f e_m(src);
-    cout << e_m.determinant() << endl;
-    cout << m.getDeterminant() << endl;
+//    scalar src[]{4.f, 1.f, 2.f, 3.f,
+//                  4.f, 5.f, 6.f, 7.f,
+//                  8.f, 3.f, 1.f, 11.f,
+//                  12.f, 13.f, 14.f, 15.f};
+//    m.set(src);
+//    Eigen::Matrix4f e_m(src);
+//    cout << e_m.determinant() << endl;
+//    cout << m.getDeterminant() << endl;
 
-    m.setIdentity();
-    Matrix3 r3;
-    r3.setRotationMatrix(Vector3(1.f, 1.f, 1.f), 25);
-    cout << r3 << endl;
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            m(i, j) = r3(i, j);
-        }
-    }
-    m(0, 3) = 3.3;
-    m(1, 3) = 2.3;
-    cout << m << endl;
-    cout << m.isRotationMatrix() << endl;
-    cout << m.isEuclideanMatrix() << endl;
-    cout << m.isAffineMatrix() << endl;
-    cout << m / 2 << endl;
+//    m.setIdentity();
+//    Matrix3 r3;
+//    r3.setRotationMatrix(Vector3(1.f, 1.f, 1.f), 25);
+//    cout << r3 << endl;
+//    for (int i = 0; i < 3; ++i) {
+//        for (int j = 0; j < 3; ++j) {
+//            m(i, j) = r3(i, j);
+//        }
+//    }
+//    m(0, 3) = 3.3;
+//    m(1, 3) = 2.3;
+//    cout << m << endl;
+//    cout << m.isRotationMatrix() << endl;
+//    cout << m.isEuclideanMatrix() << endl;
+//    cout << m.isAffineMatrix() << endl;
+//    cout << m / 2 << endl;
 
-    Matrix4 v(m);
-    float a = 5;
-    Eigen::Matrix4f e_v(v.data());
-    e_m = e_v;
-    cout << v.matmul(m) << endl;
-    cout << e_v * e_m << endl;
+//    Matrix4 v(m);
+//    float a = 5;
+//    Eigen::Matrix4f e_v(v.data());
+//    e_m = e_v;
+//    cout << v.matmul(m) << endl;
+//    cout << e_v * e_m << endl;
 
-    m.setIdentity();
-    cout << v << endl;
-    cout << v * m << endl;
-    v = m;
-    v[0] += MYEPSILON;
-    cout << v.equal(m) << endl;
-    cout << (v == m) << endl;
-    cout << (v != m) << endl;
+//    m.setIdentity();
+//    cout << v << endl;
+//    cout << v * m << endl;
+//    v = m;
+//    v[0] += MYEPSILON;
+//    cout << v.equal(m) << endl;
+//    cout << (v == m) << endl;
+//    cout << (v != m) << endl;
 
-    v.set(src);
-    cout << v << endl;
-    v *= 5;
-    cout << v << endl;
-    cout << -v << endl;
+//    v.set(src);
+//    cout << v << endl;
+//    v *= 5;
+//    cout << v << endl;
+//    cout << -v << endl;
 
-    cout << v * Vector4(1.f, 1.f, 1.f, 1.f) << endl;
-    cout << Vector4(1.f, 1.f, 1.f, 1.f) * v << endl;
+//    cout << v * Vector4(1.f, 1.f, 1.f, 1.f) << endl;
+//    cout << Vector4(1.f, 1.f, 1.f, 1.f) * v << endl;
 //    v *= m;
 //    cout << v << endl;
 //    cout << v * 0.1 << endl;

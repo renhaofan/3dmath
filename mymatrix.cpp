@@ -834,9 +834,7 @@ std::ostream& operator<<(std::ostream& os, const Matrix3& mat3) {
 scalar Matrix4::getCofactor(scalar m0, scalar m1, scalar m2,
                             scalar m3, scalar m4, scalar m5,
                             scalar m6, scalar m7, scalar m8) const {
-    return m0 * (m4 * m8 - m5 * m7) -
-           m1 * (m3 * m8 - m5 * m6) +
-           m2 * (m3 * m7 - m4 * m6);
+    return m0 * (m4 * m8 - m5 * m7) - m1 * (m3 * m8 - m5 * m6) + m2 * (m3 * m7 - m4 * m6);
 }
 
 Matrix4::Matrix4() {
@@ -974,10 +972,10 @@ Vector4 Matrix4::getColumn(int index) const {
 }
 
 scalar Matrix4::getDeterminant() const {
-    return (m[0] * getCofactor(m[5],m[6],m[7], m[9],m[10],m[11], m[13],m[14],m[15])
-            - m[1] * getCofactor(m[4],m[6],m[7], m[8],m[10],m[11], m[12],m[14],m[15])
-            + m[2] * getCofactor(m[4],m[5],m[7], m[8],m[9], m[11], m[12],m[13],m[15])
-            - m[3] * getCofactor(m[4],m[5],m[6], m[8],m[9], m[10], m[12],m[13],m[14]));
+    return (m[0] * getCofactor(m[5], m[6], m[7], m[9], m[10], m[11], m[13], m[14], m[15])
+            - m[1] * getCofactor(m[4], m[6], m[7], m[8], m[10], m[11], m[12], m[14], m[15])
+            + m[2] * getCofactor(m[4], m[5], m[7], m[8], m[9], m[11], m[12], m[13], m[15])
+            - m[3] * getCofactor(m[4], m[5], m[6], m[8], m[9], m[10], m[12], m[13], m[14]));
 }
 
 bool Matrix4::isRotationMatrix() const {
@@ -1009,21 +1007,21 @@ bool Matrix4::isAffineMatrix() const {
     if (std::abs(m[11]) > MYEPSILON) return false;
     if (std::abs(m[15] - 1) > MYEPSILON) return false;
     Matrix3 tmp(m[0], m[1], m[2], m[4], m[5], m[6], m[8], m[9], m[10]);
-    if (std::abs(tmp.getDeterminant())  > MYEPSILON) return false;
+    if (std::abs(tmp.getDeterminant()) > MYEPSILON) return false;
     return true;
 }
 
 bool Matrix4::isPeojectiveMatrix() const {
-    if(std::abs(m[0] * m[5] - m[1] * m[4]) > MYEPSILON) return false;
+    if (std::abs(m[0] * m[5] - m[1] * m[4]) > MYEPSILON) return false;
     return true;
 }
 
 void Matrix4::transpose() {
-    std::swap(m[1],  m[4]);
-    std::swap(m[2],  m[8]);
-    std::swap(m[3],  m[12]);
-    std::swap(m[6],  m[9]);
-    std::swap(m[7],  m[13]);
+    std::swap(m[1], m[4]);
+    std::swap(m[2], m[8]);
+    std::swap(m[3], m[12]);
+    std::swap(m[6], m[9]);
+    std::swap(m[7], m[13]);
     std::swap(m[11], m[14]);
 }
 
@@ -1040,52 +1038,52 @@ void Matrix4::inverse() {
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Inverse matrix not exists!";
     }
-    scalar cofactor0 = getCofactor(m[5],m[6],m[7], m[9],m[10],m[11], m[13],m[14],m[15]);
-    scalar cofactor1 = getCofactor(m[4],m[6],m[7], m[8],m[10],m[11], m[12],m[14],m[15]);
-    scalar cofactor2 = getCofactor(m[4],m[5],m[7], m[8],m[9], m[11], m[12],m[13],m[15]);
-    scalar cofactor3 = getCofactor(m[4],m[5],m[6], m[8],m[9], m[10], m[12],m[13],m[14]);
+    scalar cofactor0 = getCofactor(m[5], m[6], m[7], m[9], m[10], m[11], m[13], m[14], m[15]);
+    scalar cofactor1 = getCofactor(m[4], m[6], m[7], m[8], m[10], m[11], m[12], m[14], m[15]);
+    scalar cofactor2 = getCofactor(m[4], m[5], m[7], m[8], m[9], m[11], m[12], m[13], m[15]);
+    scalar cofactor3 = getCofactor(m[4], m[5], m[6], m[8], m[9], m[10], m[12], m[13], m[14]);
 
     // get determinant
     scalar determinant = m[0] * cofactor0 - m[1] * cofactor1 + m[2] * cofactor2 - m[3] * cofactor3;
 
     // get rest of cofactors for adj(M)
-    scalar cofactor4 = getCofactor(m[1],m[2],m[3], m[9],m[10],m[11], m[13],m[14],m[15]);
-    scalar cofactor5 = getCofactor(m[0],m[2],m[3], m[8],m[10],m[11], m[12],m[14],m[15]);
-    scalar cofactor6 = getCofactor(m[0],m[1],m[3], m[8],m[9], m[11], m[12],m[13],m[15]);
-    scalar cofactor7 = getCofactor(m[0],m[1],m[2], m[8],m[9], m[10], m[12],m[13],m[14]);
+    scalar cofactor4 = getCofactor(m[1], m[2], m[3], m[9], m[10], m[11], m[13], m[14], m[15]);
+    scalar cofactor5 = getCofactor(m[0], m[2], m[3], m[8], m[10], m[11], m[12], m[14], m[15]);
+    scalar cofactor6 = getCofactor(m[0], m[1], m[3], m[8], m[9], m[11], m[12], m[13], m[15]);
+    scalar cofactor7 = getCofactor(m[0], m[1], m[2], m[8], m[9], m[10], m[12], m[13], m[14]);
 
-    scalar cofactor8 = getCofactor(m[1],m[2],m[3], m[5],m[6], m[7],  m[13],m[14],m[15]);
-    scalar cofactor9 = getCofactor(m[0],m[2],m[3], m[4],m[6], m[7],  m[12],m[14],m[15]);
-    scalar cofactor10= getCofactor(m[0],m[1],m[3], m[4],m[5], m[7],  m[12],m[13],m[15]);
-    scalar cofactor11= getCofactor(m[0],m[1],m[2], m[4],m[5], m[6],  m[12],m[13],m[14]);
+    scalar cofactor8 = getCofactor(m[1], m[2], m[3], m[5], m[6], m[7], m[13], m[14], m[15]);
+    scalar cofactor9 = getCofactor(m[0], m[2], m[3], m[4], m[6], m[7], m[12], m[14], m[15]);
+    scalar cofactor10 = getCofactor(m[0], m[1], m[3], m[4], m[5], m[7], m[12], m[13], m[15]);
+    scalar cofactor11 = getCofactor(m[0], m[1], m[2], m[4], m[5], m[6], m[12], m[13], m[14]);
 
-    scalar cofactor12= getCofactor(m[1],m[2],m[3], m[5],m[6], m[7],  m[9], m[10],m[11]);
-    scalar cofactor13= getCofactor(m[0],m[2],m[3], m[4],m[6], m[7],  m[8], m[10],m[11]);
-    scalar cofactor14= getCofactor(m[0],m[1],m[3], m[4],m[5], m[7],  m[8], m[9], m[11]);
-    scalar cofactor15= getCofactor(m[0],m[1],m[2], m[4],m[5], m[6],  m[8], m[9], m[10]);
+    scalar cofactor12 = getCofactor(m[1], m[2], m[3], m[5], m[6], m[7], m[9], m[10], m[11]);
+    scalar cofactor13 = getCofactor(m[0], m[2], m[3], m[4], m[6], m[7], m[8], m[10], m[11]);
+    scalar cofactor14 = getCofactor(m[0], m[1], m[3], m[4], m[5], m[7], m[8], m[9], m[11]);
+    scalar cofactor15 = getCofactor(m[0], m[1], m[2], m[4], m[5], m[6], m[8], m[9], m[10]);
 
     // build inverse matrix = adj(M) / det(M)
     // adjugate of M is the transpose of the cofactor matrix of M
     scalar invDeterminant = 1.0f / determinant;
-    m[0] =  invDeterminant * cofactor0;
+    m[0] = invDeterminant * cofactor0;
     m[1] = -invDeterminant * cofactor4;
-    m[2] =  invDeterminant * cofactor8;
+    m[2] = invDeterminant * cofactor8;
     m[3] = -invDeterminant * cofactor12;
 
     m[4] = -invDeterminant * cofactor1;
-    m[5] =  invDeterminant * cofactor5;
+    m[5] = invDeterminant * cofactor5;
     m[6] = -invDeterminant * cofactor9;
-    m[7] =  invDeterminant * cofactor13;
+    m[7] = invDeterminant * cofactor13;
 
-    m[8] =  invDeterminant * cofactor2;
+    m[8] = invDeterminant * cofactor2;
     m[9] = -invDeterminant * cofactor6;
-    m[10]=  invDeterminant * cofactor10;
-    m[11]= -invDeterminant * cofactor14;
+    m[10] = invDeterminant * cofactor10;
+    m[11] = -invDeterminant * cofactor14;
 
-    m[12]= -invDeterminant * cofactor3;
-    m[13]=  invDeterminant * cofactor7;
-    m[14]= -invDeterminant * cofactor11;
-    m[15]=  invDeterminant * cofactor15;
+    m[12] = -invDeterminant * cofactor3;
+    m[13] = invDeterminant * cofactor7;
+    m[14] = -invDeterminant * cofactor11;
+    m[15] = invDeterminant * cofactor15;
 }
 
 Matrix4 Matrix4::computeInverse() const {
@@ -1094,60 +1092,58 @@ Matrix4 Matrix4::computeInverse() const {
                 __FILE__, __LINE__, __FUNCTION__);
         throw "Inverse matrix not exists!";
     }
-    scalar cofactor0 = getCofactor(m[5],m[6],m[7], m[9],m[10],m[11], m[13],m[14],m[15]);
-    scalar cofactor1 = getCofactor(m[4],m[6],m[7], m[8],m[10],m[11], m[12],m[14],m[15]);
-    scalar cofactor2 = getCofactor(m[4],m[5],m[7], m[8],m[9], m[11], m[12],m[13],m[15]);
-    scalar cofactor3 = getCofactor(m[4],m[5],m[6], m[8],m[9], m[10], m[12],m[13],m[14]);
+    scalar cofactor0 = getCofactor(m[5], m[6], m[7], m[9], m[10], m[11], m[13], m[14], m[15]);
+    scalar cofactor1 = getCofactor(m[4], m[6], m[7], m[8], m[10], m[11], m[12], m[14], m[15]);
+    scalar cofactor2 = getCofactor(m[4], m[5], m[7], m[8], m[9], m[11], m[12], m[13], m[15]);
+    scalar cofactor3 = getCofactor(m[4], m[5], m[6], m[8], m[9], m[10], m[12], m[13], m[14]);
 
     // get determinant
     scalar determinant = m[0] * cofactor0 - m[1] * cofactor1 + m[2] * cofactor2 - m[3] * cofactor3;
 
     // get rest of cofactors for adj(M)
-    scalar cofactor4 = getCofactor(m[1],m[2],m[3], m[9],m[10],m[11], m[13],m[14],m[15]);
-    scalar cofactor5 = getCofactor(m[0],m[2],m[3], m[8],m[10],m[11], m[12],m[14],m[15]);
-    scalar cofactor6 = getCofactor(m[0],m[1],m[3], m[8],m[9], m[11], m[12],m[13],m[15]);
-    scalar cofactor7 = getCofactor(m[0],m[1],m[2], m[8],m[9], m[10], m[12],m[13],m[14]);
+    scalar cofactor4 = getCofactor(m[1], m[2], m[3], m[9], m[10], m[11], m[13], m[14], m[15]);
+    scalar cofactor5 = getCofactor(m[0], m[2], m[3], m[8], m[10], m[11], m[12], m[14], m[15]);
+    scalar cofactor6 = getCofactor(m[0], m[1], m[3], m[8], m[9], m[11], m[12], m[13], m[15]);
+    scalar cofactor7 = getCofactor(m[0], m[1], m[2], m[8], m[9], m[10], m[12], m[13], m[14]);
 
-    scalar cofactor8 = getCofactor(m[1],m[2],m[3], m[5],m[6], m[7],  m[13],m[14],m[15]);
-    scalar cofactor9 = getCofactor(m[0],m[2],m[3], m[4],m[6], m[7],  m[12],m[14],m[15]);
-    scalar cofactor10= getCofactor(m[0],m[1],m[3], m[4],m[5], m[7],  m[12],m[13],m[15]);
-    scalar cofactor11= getCofactor(m[0],m[1],m[2], m[4],m[5], m[6],  m[12],m[13],m[14]);
+    scalar cofactor8 = getCofactor(m[1], m[2], m[3], m[5], m[6], m[7], m[13], m[14], m[15]);
+    scalar cofactor9 = getCofactor(m[0], m[2], m[3], m[4], m[6], m[7], m[12], m[14], m[15]);
+    scalar cofactor10 = getCofactor(m[0], m[1], m[3], m[4], m[5], m[7], m[12], m[13], m[15]);
+    scalar cofactor11 = getCofactor(m[0], m[1], m[2], m[4], m[5], m[6], m[12], m[13], m[14]);
 
-    scalar cofactor12= getCofactor(m[1],m[2],m[3], m[5],m[6], m[7],  m[9], m[10],m[11]);
-    scalar cofactor13= getCofactor(m[0],m[2],m[3], m[4],m[6], m[7],  m[8], m[10],m[11]);
-    scalar cofactor14= getCofactor(m[0],m[1],m[3], m[4],m[5], m[7],  m[8], m[9], m[11]);
-    scalar cofactor15= getCofactor(m[0],m[1],m[2], m[4],m[5], m[6],  m[8], m[9], m[10]);
+    scalar cofactor12 = getCofactor(m[1], m[2], m[3], m[5], m[6], m[7], m[9], m[10], m[11]);
+    scalar cofactor13 = getCofactor(m[0], m[2], m[3], m[4], m[6], m[7], m[8], m[10], m[11]);
+    scalar cofactor14 = getCofactor(m[0], m[1], m[3], m[4], m[5], m[7], m[8], m[9], m[11]);
+    scalar cofactor15 = getCofactor(m[0], m[1], m[2], m[4], m[5], m[6], m[8], m[9], m[10]);
 
     // build inverse matrix = adj(M) / det(M)
     // adjugate of M is the transpose of the cofactor matrix of M
     scalar invDeterminant = 1.0f / determinant;
     scalar tmp[16];
-    tmp[0] =  invDeterminant * cofactor0;
+    tmp[0] = invDeterminant * cofactor0;
     tmp[1] = -invDeterminant * cofactor4;
-    tmp[2] =  invDeterminant * cofactor8;
+    tmp[2] = invDeterminant * cofactor8;
     tmp[3] = -invDeterminant * cofactor12;
 
     tmp[4] = -invDeterminant * cofactor1;
-    tmp[5] =  invDeterminant * cofactor5;
+    tmp[5] = invDeterminant * cofactor5;
     tmp[6] = -invDeterminant * cofactor9;
-    tmp[7] =  invDeterminant * cofactor13;
+    tmp[7] = invDeterminant * cofactor13;
 
-    tmp[8] =  invDeterminant * cofactor2;
+    tmp[8] = invDeterminant * cofactor2;
     tmp[9] = -invDeterminant * cofactor6;
-    tmp[10]=  invDeterminant * cofactor10;
-    tmp[11]= -invDeterminant * cofactor14;
+    tmp[10] = invDeterminant * cofactor10;
+    tmp[11] = -invDeterminant * cofactor14;
 
-    tmp[12]= -invDeterminant * cofactor3;
-    tmp[13]=  invDeterminant * cofactor7;
-    tmp[14]= -invDeterminant * cofactor11;
-    tmp[15]=  invDeterminant * cofactor15;
+    tmp[12] = -invDeterminant * cofactor3;
+    tmp[13] = invDeterminant * cofactor7;
+    tmp[14] = -invDeterminant * cofactor11;
+    tmp[15] = invDeterminant * cofactor15;
     return Matrix4(tmp[0], tmp[1], tmp[2], tmp[3],
                    tmp[4], tmp[5], tmp[6], tmp[7],
                    tmp[8], tmp[9], tmp[10], tmp[11],
                    tmp[12], tmp[13], tmp[14], tmp[15]);
 }
-
-
 
 bool Matrix4::isInversed() const {
     if (this->isRotationMatrix()) return true;
@@ -1264,7 +1260,7 @@ Matrix4 Matrix4::computeProjectiveInverse() const {
     Matrix2 d(m[10], m[11], m[14], m[15]);
 
     // pre-compute repeated parts
-    a.inverse();             // A^-1
+    a.inverse();            // A^-1
     Matrix2 ab = a * b;     // A^-1 * B
     Matrix2 ca = c * a;     // C * A^-1
     Matrix2 cab = ca * b;   // C * A^-1 * B
@@ -1280,30 +1276,136 @@ Matrix4 Matrix4::computeProjectiveInverse() const {
         throw "Projective matrix is not reversible.";
     }
     // compute D' and -D'
-    Matrix2 d1 = dcab;      //  (D - C * A^-1 * B)
-    d1.inverse();            //  (D - C * A^-1 * B)^-1
-    Matrix2 d2 = -d1;       // -(D - C * A^-1 * B)^-1
+    Matrix2 d1 = dcab; //  (D - C * A^-1 * B)
+    d1.inverse();      //  (D - C * A^-1 * B)^-1
+    Matrix2 d2 = -d1;  // -(D - C * A^-1 * B)^-1
 
     // compute C'
-    Matrix2 c1 = d2 * ca;   // -D' * (C * A^-1)
+    Matrix2 c1 = d2 * ca; // -D' * (C * A^-1)
 
     // compute B'
-    Matrix2 b1 = ab * d2;   // (A^-1 * B) * -D'
+    Matrix2 b1 = ab * d2; // (A^-1 * B) * -D'
 
     // compute A'
     Matrix2 a1 = a - (ab * c1); // A^-1 - (A^-1 * B) * C'
 
     Matrix4 ret;
     // assemble inverse matrix
-    ret[0] = a1[0];  ret[4] = a1[2]; /*|*/ ret[8] = b1[0];  ret[12]= b1[2];
-    ret[1] = a1[1];  ret[5] = a1[3]; /*|*/ ret[9] = b1[1];  ret[13]= b1[3];
+    ret[0] = a1[0];
+    ret[4] = a1[2]; /*|*/
+    ret[8] = b1[0];
+    ret[12] = b1[2];
+    ret[1] = a1[1];
+    ret[5] = a1[3]; /*|*/
+    ret[9] = b1[1];
+    ret[13] = b1[3];
     /*-----------------------------+-----------------------------*/
-    ret[2] = c1[0];  ret[6] = c1[2]; /*|*/ ret[10]= d1[0];  ret[14]= d1[2];
-    ret[3] = c1[1];  ret[7] = c1[3]; /*|*/ ret[11]= d1[1];  ret[15]= d1[3];
+    ret[2] = c1[0];
+    ret[6] = c1[2]; /*|*/
+    ret[10] = d1[0];
+    ret[14] = d1[2];
+    ret[3] = c1[1];
+    ret[7] = c1[3]; /*|*/
+    ret[11] = d1[1];
+    ret[15] = d1[3];
     return ret;
 }
 
-Matrix4 Matrix4::operator+(const Matrix4 &rhs) const {
+Matrix4& Matrix4::translate(scalar x, scalar y, scalar z) {
+    // |  1  0  0  x |        |  0  4  8 12 |
+    // |  0  1  0  y |        |  1  5  9 13 |
+    // |  0  0  1  z | matmul |  2  6 10 14 |
+    // |  0  0  0  1 |        |  3  7 11 15 |
+    Matrix4 t;
+    t(0, 3) = x;
+    t(1, 3) = y;
+    t(2, 3) = z;
+    *this = t.matmul(*this);
+    return *this;
+}
+
+Matrix4& Matrix4::translate(const Vector3& v) {
+    return translate(v[0], v[1], v[2]);
+}
+
+Matrix4& Matrix4::rotate(scalar angle, scalar x, scalar y, scalar z) {
+    Matrix3 r;
+    r.setRotationMatrix(Vector3(x, y, z), angle);
+    Matrix4 rh = r.toHomogenous();
+    *this = rh.matmul(*this);
+    return *this;
+}
+
+Matrix4& Matrix4::rotate(scalar angle, const Vector3& axis) {
+    return rotate(angle, axis[0], axis[1], axis[2]);
+}
+
+Matrix4& Matrix4::rotateX(scalar angle) {
+    // |  1  0  0  0 |        |  0  4  8 12 |
+    // |  0  c -s  0 |        |  1  5  9 13 |
+    // |  0  s  c  0 | matmul |  2  6 10 14 |
+    // |  0  0  0  1 |        |  3  7 11 15 |
+    scalar c = std::cos(angle * DEG2RAD);
+    scalar s = std::sin(angle * DEG2RAD);
+    Matrix4 r;
+    r(1, 1) = c;
+    r(2, 2) = c;
+    r(2, 1) = s;
+    r(1, 2) = -s;
+    *this = r.matmul(*this);
+    return *this;
+}
+
+Matrix4& Matrix4::rotateY(scalar angle) {
+    // |  c  0  s  0 |        |  0  4  8 12 |
+    // |  0  1  0  0 |        |  1  5  9 13 |
+    // | -s  0  c  0 | matmul |  2  6 10 14 |
+    // |  0  0  0  1 |        |  3  7 11 15 |
+    scalar c = std::cos(angle * DEG2RAD);
+    scalar s = std::sin(angle * DEG2RAD);
+    Matrix4 r;
+    r(0, 0) = c;
+    r(2, 2) = c;
+    r(2, 0) = -s;
+    r(0, 2) = s;
+    *this = r.matmul(*this);
+    return *this;
+}
+
+Matrix4 &Matrix4::rotateZ(scalar angle) {
+    // |  c -s  0  0 |        |  0  4  8 12 |
+    // |  s  c  0  0 |        |  1  5  9 13 |
+    // |  0  0  1  0 | matmul |  2  6 10 14 |
+    // |  0  0  0  1 |        |  3  7 11 15 |
+    scalar c = std::cos(angle * DEG2RAD);
+    scalar s = std::sin(angle * DEG2RAD);
+    Matrix4 r;
+    r(0, 0) = c;
+    r(1, 1) = c;
+    r(0, 1) = -s;
+    r(1, 0) = s;
+    *this = r.matmul(*this);
+    return *this;
+}
+
+Matrix4& Matrix4::scale(scalar sx, scalar sy, scalar sz) {
+    // | sx   0   0  0 |        |  0  4  8 12 |
+    // |  0  sy   0  0 |        |  1  5  9 13 |
+    // |  0   0  sz  0 | matmul |  2  6 10 14 |
+    // |  0   0   0  1 |        |  3  7 11 15 |
+    Matrix4 t;
+    t(0, 0) = sx;
+    t(1, 1) = sy;
+    t(2, 2) = sz;
+    *this = t.matmul(*this);
+    return *this;
+}
+
+Matrix4& Matrix4::scale(scalar s) {
+    return scale(s, s, s);
+}
+
+Matrix4 Matrix4::operator+(const Matrix4& rhs) const {
     Matrix4 ret;
     for (int i = 0; i < 16; ++i) {
         ret[i] = this->m[i] + rhs[i];
@@ -1311,14 +1413,14 @@ Matrix4 Matrix4::operator+(const Matrix4 &rhs) const {
     return ret;
 }
 
-Matrix4& Matrix4::operator+=(const Matrix4 &rhs) {
+Matrix4& Matrix4::operator+=(const Matrix4& rhs) {
     for (int i = 0; i < 16; ++i) {
         this->m[i] += rhs[i];
     }
     return *this;
 }
 
-Matrix4 Matrix4::operator-(const Matrix4 &rhs) const {
+Matrix4 Matrix4::operator-(const Matrix4& rhs) const {
     Matrix4 ret;
     for (int i = 0; i < 16; ++i) {
         ret[i] = this->m[i] - rhs[i];
@@ -1326,14 +1428,14 @@ Matrix4 Matrix4::operator-(const Matrix4 &rhs) const {
     return ret;
 }
 
-Matrix4& Matrix4::operator-=(const Matrix4 &rhs) {
+Matrix4& Matrix4::operator-=(const Matrix4& rhs) {
     for (int i = 0; i < 16; ++i) {
         this->m[i] -= rhs[i];
     }
     return *this;
 }
 
-Matrix4 Matrix4::matmul(const Matrix4 &rhs) const {
+Matrix4 Matrix4::matmul(const Matrix4& rhs) const {
     // |  0  4  8 12 | |  0  4  8 12 |
     // |  1  5  9 13 | |  1  5  9 13 |
     // |  2  6 10 14 | |  2  6 10 14 |
@@ -1347,7 +1449,7 @@ Matrix4 Matrix4::matmul(const Matrix4 &rhs) const {
     return ret;
 }
 
-Vector4 Matrix4::operator*(const Vector4 &rhs) const {
+Vector4 Matrix4::operator*(const Vector4& rhs) const {
     Vector4 ret;
     for (int i = 0; i < 4; ++i) {
         ret[i] = this->getRow(i).dot(rhs);
@@ -1371,7 +1473,7 @@ Matrix4 Matrix4::operator*(const scalar& rhs) {
     return ret;
 }
 
-Matrix4& Matrix4::operator*=(const Matrix4 &rhs) {
+Matrix4& Matrix4::operator*=(const Matrix4& rhs) {
     for (int i = 0; i < 16; ++i) {
         this->m[i] *= rhs[i];
     }
@@ -1383,7 +1485,7 @@ Matrix4& Matrix4::operator*=(const scalar& rhs) {
     return *this;
 }
 
-Matrix4 Matrix4::operator/(const scalar &rhs) const {
+Matrix4 Matrix4::operator/(const scalar& rhs) const {
     if (std::abs(rhs) < MYEPSILON) {
         fprintf(stderr, "File %s, Line %d, Function %s(): Division by zero condition.\n",
                 __FILE__, __LINE__, __FUNCTION__);
@@ -1408,7 +1510,7 @@ Matrix4& Matrix4::operator/=(const scalar& rhs) {
     return *this;
 }
 
-bool Matrix4::equal(const Matrix4 &rhs, scalar e) const {
+bool Matrix4::equal(const Matrix4& rhs, scalar e) const {
     for (int i = 0; i < 16; ++i) {
         if (std::abs(m[i] - rhs[i]) > MYEPSILON) {
             return false;
@@ -1417,7 +1519,7 @@ bool Matrix4::equal(const Matrix4 &rhs, scalar e) const {
     return true;
 }
 
-bool Matrix4::operator==(const Matrix4 &rhs) const {
+bool Matrix4::operator==(const Matrix4& rhs) const {
     for (int i = 0; i < 16; ++i) {
         if (m[i] != rhs[i]) {
             return false;
@@ -1426,7 +1528,7 @@ bool Matrix4::operator==(const Matrix4 &rhs) const {
     return true;
 }
 
-bool Matrix4::operator!=(const Matrix4 &rhs) const {
+bool Matrix4::operator!=(const Matrix4& rhs) const {
     for (int i = 0; i < 16; ++i) {
         if (m[i] != rhs[i]) {
             return true;
@@ -1479,10 +1581,10 @@ Matrix4 operator-(const Matrix4& mat4) {
 }
 
 Matrix4 operator*(const scalar& s, const Matrix4& mat4) {
-    return Matrix4(s*mat4[0], s*mat4[1], s*mat4[2], s*mat4[3],
-                   s*mat4[4], s*mat4[5], s*mat4[6], s*mat4[7],
-                   s*mat4[8], s*mat4[9], s*mat4[10], s*mat4[11],
-                   s*mat4[12], s*mat4[13], s*mat4[14], s*mat4[15]);
+    return Matrix4(s * mat4[0], s * mat4[1], s * mat4[2], s * mat4[3],
+                   s * mat4[4], s * mat4[5], s * mat4[6], s * mat4[7],
+                   s * mat4[8], s * mat4[9], s * mat4[10], s * mat4[11],
+                   s * mat4[12], s * mat4[13], s * mat4[14], s * mat4[15]);
 }
 
 Vector4 operator*(const Vector4& vec, const Matrix4& mat4) {
@@ -1495,10 +1597,10 @@ Vector4 operator*(const Vector4& vec, const Matrix4& mat4) {
 
 std::ostream& operator<<(std::ostream& os, const Matrix4& mat4) {
     os << std::fixed << std::setprecision(6);
-    os << "[" << std::setw(10) << mat4[0] << " " << std::setw(10) << mat4[4] << " " << std::setw(10) << mat4[8]  <<  " " << std::setw(10) << mat4[12] << "]\n"
-       << "[" << std::setw(10) << mat4[1] << " " << std::setw(10) << mat4[5] << " " << std::setw(10) << mat4[9]  <<  " " << std::setw(10) << mat4[13] << "]\n"
-       << "[" << std::setw(10) << mat4[2] << " " << std::setw(10) << mat4[6] << " " << std::setw(10) << mat4[10] <<  " " << std::setw(10) << mat4[14] << "]\n"
-       << "[" << std::setw(10) << mat4[3] << " " << std::setw(10) << mat4[7] << " " << std::setw(10) << mat4[11] <<  " " << std::setw(10) << mat4[15] << "]\n";
+    os << "[" << std::setw(10) << mat4[0] << " " << std::setw(10) << mat4[4] << " " << std::setw(10) << mat4[8] << " " << std::setw(10) << mat4[12] << "]\n"
+       << "[" << std::setw(10) << mat4[1] << " " << std::setw(10) << mat4[5] << " " << std::setw(10) << mat4[9] << " " << std::setw(10) << mat4[13] << "]\n"
+       << "[" << std::setw(10) << mat4[2] << " " << std::setw(10) << mat4[6] << " " << std::setw(10) << mat4[10] << " " << std::setw(10) << mat4[14] << "]\n"
+       << "[" << std::setw(10) << mat4[3] << " " << std::setw(10) << mat4[7] << " " << std::setw(10) << mat4[11] << " " << std::setw(10) << mat4[15] << "]\n";
     os << std::resetiosflags(std::ios_base::fixed | std::ios_base::floatfield);
     return os;
 }

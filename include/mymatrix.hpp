@@ -8,6 +8,7 @@
  *  @todo function data() issue, when multiple pointer point that, memory management.
  *  @todo block operation.
  *  @todo matrix3 get axis-angle.
+ *  @todo opeartor [][]
  *  @note The elements of the matrix are stored as column major order.
  *  @note| 0 2 |....| 0 3 6 |......| 0  4  8 12 |
  *  @note| 1 3 |....| 1 4 7 |......| 1  5  9 13 |
@@ -1109,6 +1110,71 @@ public:
      * @return result
      */
     Matrix4 computeProjectiveInverse() const;
+
+    /**
+     * @brief In-place operation, multiply translation matrix with this matrix.
+     * @param x translation in the (1, 0, 0) direction.
+     * @param y translation in the (0, 1, 0) direction.
+     * @param z translation in the (0, 0, 1) direction.
+     * @return self-matrix.
+     */
+    Matrix4& translate(scalar x, scalar y, scalar z);
+    /**
+     * @brief In-place operation, multiply translation matrix with this matrix.
+     * @param v translation in (1, 0, 0), (0, 1, 0), (0, 0, 1) direction.
+     * @return self-matrix.
+     */
+    Matrix4& translate(const Vector3& v);
+    /**
+     * @brief In-place operation, left multiplied by rotation matrix.
+     * @param angle unit in degree.
+     * @param x component of rotation axis.
+     * @param y component of rotation axis.
+     * @param z component of rotation axis.
+     * @warning axis composed of rotation matrix will be normalized.
+     * @return self-matrix.
+     */
+    Matrix4& rotate(scalar angle, scalar x, scalar y, scalar z);
+    /**
+     * @brief In-place operation, left multiplied by rotation matrix.
+     * @param angle unit in degree.
+     * @param axis rotation axis.
+     * @warning axis composed of rotation matrix will be normalized.
+     * @return self-matrix.
+     */
+    Matrix4& rotate(scalar angle, const Vector3& axis);
+    /**
+     * @brief In-place operation, left multiplied by rotation matrix around (1, 0, 0) dir.
+     * @param angle rotation value around (1, 0, 0), unit in degree.
+     * @return self-matrix.
+     */
+    Matrix4& rotateX(scalar angle);
+    /**
+     * @brief In-place operation, left multiplied by rotation matrix around (0, 1, 0) dir.
+     * @param angle rotation value around (0, 1, 0), unit in degree.
+     * @return self-matrix.
+     */
+    Matrix4& rotateY(scalar angle);
+    /**
+     * @brief In-place operation, left multiplied by rotation matrix around (0, 0, 1) dir.
+     * @param angle rotation value around (0, 0, 1), unit in degree.
+     * @return self-matrix.
+     */
+    Matrix4& rotateZ(scalar angle);
+    /**
+     * @brief In-place operation, left multiplied by scale matrix.
+     * @param sx scale in (1, 0, 0).
+     * @param sy scale in (1, 0, 0).
+     * @param sz scale in (1, 0, 0).
+     * @return self-matrix.
+     */
+    Matrix4& scale(scalar sx, scalar sy, scalar sz);
+    /**
+     * @brief In-place operation, left multiplied by scale matrix.
+     * @param s diagonal value in scale matrix.
+     * @return self-matrix.
+     */
+    Matrix4& scale(scalar s);
 
     /**
      * @brief Binary operator, addition of two 4x4 matrix.
